@@ -1,0 +1,125 @@
+@using System.Security.Claims
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-table.css"/>
+        <link rel="stylesheet" href="~/css/bootstrap-table.min.css"/>
+        <link rel="stylesheet" href="~/css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/js/jquery-3.3.1.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/bootstrap-table.js"></script>
+        <script src="~/js/bootstrap-table-zh-CN.js"></script>
+        <script> 
+            $(function() {
+                $(".dropdown-toggle").dropdown();
+            });
+        </script>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/bootstrap-table.css">
+        <link rel="stylesheet" href="~/css/bootstrap-table.min.css">
+        <link rel="stylesheet" href="~/css/bootstrap-theme.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <script src="~/js/jquery-3.3.1.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/bootstrap-table.js"></script>
+        <script src="~/js/bootstrap-table-zh-CN.js"></script>
+        <script> 
+            $(function() {
+                $(".dropdown-toggle").dropdown();
+            });
+        </script>
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Cosmetology</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    内容管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a asp-controller="ManageContent" asp-action="AddArticles">添加文章内容</a></li>
+                    <li><a asp-controller="ManageContent" asp-action="AddFeatures">添加企业特性</a></li>
+                    <li><a asp-controller="ManageContent" asp-action="AddMovies">添加显示视频</a></li>
+                    <li><a asp-controller="ManageContent" asp-action="AddScrollPics">添加首页轮播图</a></li>
+                </ul>
+            </li>
+            <li>
+                <a asp-controller="ManageContent" asp-action="MessageManage">客户信息管理</a>
+            </li>
+            <li >
+                <a asp-controller="ManageContent" asp-action="Update">修改情况显示</a>
+            </li>
+            <li class="dropdown">
+             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    账号管理
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a asp-controller="Account" asp-action="Register">添加账号</a></li>
+                    <li><a asp-controller="ManageContent" asp-action="Show">显示账号</a></li>
+                </ul>
+            </li>
+            <li>
+               <a href="#">欢迎你： @User.Identity.Name</a> 
+            </li>
+             <li>
+                <a onclick="clickthis();">退出登录</a>
+
+            </li>
+                <form method="post" asp-controller="Account" asp-action="Logout" id="forms">
+                </form>
+        </ul>
+        
+<script>
+    function clickthis(){
+         $("#forms").submit();
+    }
+</script>
+    </div>
+    </div>
+</nav>
+<div class="container body-content">
+        @RenderBody()
+</div>
+     <environment include="Development">
+        <script src="~/js/jquery-3.3.1.js"></script>
+        <script src="~/js/bootstrap.js"></script>
+        <script src="~/js/bootstrap-table.js"></script>
+        <script src="~/js/bootstrap-table-zh-CN.js"></script>
+     </environment>
+     <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+     </environment>
+</body>
+</html>

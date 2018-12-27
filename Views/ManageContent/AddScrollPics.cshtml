@@ -1,0 +1,23 @@
+@{
+  Layout="/Views/ManageContent/_Layout.cshtml";
+  ViewData["Title"]="添加轮播图";
+}
+<body>
+    <div class="container">
+        <form asp-action="AddScrollPics" method="POST" enctype="multipart/form-data">
+             <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">图片名称：</label>
+                <input type="text" name="PicName" class="col-sm-4 col-md-4 col-lg-4">
+             </div>
+             <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">图片链接：</label>
+                <input type="file" name="ImgUrl" class="col-sm-4 col-md-4 col-lg-4">
+             </div>
+             <div class="row">
+                 <div class="col-sm-2 col-md-2 col-lg-2"></div>
+               <input type="submit" name="提交" value="提交" class="btn btn-primary col-sm-6 col-md-6 col-lg-6"/>
+               <div class="col-sm-4 col-md-4 col-lg-4"></div>
+             </div>
+        </form>
+    </div>
+</body>

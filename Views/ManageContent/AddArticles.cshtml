@@ -1,0 +1,31 @@
+@{
+  Layout="/Views/ManageContent/_Layout.cshtml";
+  ViewData["Title"]="添加文章";
+}
+<body>
+    <div class="container">
+        <form asp-action="AddArticles" method="POST">
+             <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章名称：</label>
+                <input type="text" name="ArticleName" class="col-sm-4 col-md-4 col-lg-4">
+             </div>
+             <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章内容：</label>
+                <textarea type="text" name="ArticleContext" rows="6" class="col-sm-4 col-md-4 col-lg-4"></textarea>
+             </div>
+             <!--<div class="row">
+                <label class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">文章图片上传：</label>
+                <input type="text" name="ArticleImgUrl" class="col-sm-4 col-md-4 col-lg-4">
+             </div>
+             <div class="row">
+                <label class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">文章视频上传：</label>
+                <input type="text" name="ArticleMoiveUrl" class="col-sm-4 col-md-4 col-lg-4">
+             </div>-->
+             <div class="row">
+               <div class="col-sm-2 col-md-2 col-lg-2"></div>
+               <input type="submit" name="提交" value="提交" class="btn btn-primary col-sm-6 col-md-6 col-lg-6"/>
+               <div class="col-sm-4 col-md-4 col-lg-4"></div>
+             </div>
+        </form>
+    </div>
+</body>

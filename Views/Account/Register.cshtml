@@ -1,0 +1,31 @@
+@model Cosmetology.Controllers.RegisterViewModel
+@{
+   Layout="/Views/ManageContent/_Layout.cshtml";
+   ViewBag.Title = "注册用户";
+}
+<div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-3 col-md-offset-3 col-lg-offset-3">
+        <h3>注册用户</h3>
+        <form asp-action="Register" method="post" asp-controller="Account">
+            <div asp-validation-summary = "ModelOnly"></div> 
+            <div class="row">
+                <label asp-for="UserName" class="col-sm-4 col-md-4 col-lg-4">用 户 名:</label>
+                <input asp-for="UserName" class="col-sm-4 col-md-4 col-lg-4"/>
+                <span asp-validation-for="UserName" class="col-sm-4 col-md-4 col-lg-4"></span>
+            </div>
+            <div class="row">
+                <label asp-for="Password" class="col-sm-4 col-md-4 col-lg-4">密 码:</label>
+                <input asp-for="Password" class="col-sm-4 col-md-4 col-lg-4" />
+                <span asp-validation-for="Password" class="col-sm-4 col-md-4 col-lg-4"></span>
+            </div>
+            <div class="row">
+                <label asp-for="ConfirmPassword" class="col-sm-4 col-md-4 col-lg-4">确认密码:</label>
+                <input asp-for="ConfirmPassword" class="col-sm-4 col-md-4 col-lg-4"/>
+                <span asp-validation-for="ConfirmPassword" class="col-sm-4 col-md-4 col-lg-4"></span>
+            </div>
+            <div class="row">
+                <input type="submit" value="注册" class="btn btn-info col-sm-8 col-md-8 col-lg-8"/>
+                <div class="col-sm-4 col-md-4 col-lg-4"></div>
+            </div>
+        </form>
+</div>
+ <span>注：密码规则必须是 6 个字符以上且包含一个大写字母和小写字母，且必须包含一个非数组字母字符</span>

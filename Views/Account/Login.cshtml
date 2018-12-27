@@ -1,0 +1,41 @@
+@model Cosmetology.Controllers.LoginViewModel 
+@{ 
+   ViewBag.Title = "Login"; 
+}  
+<body>
+<div class="contact"> 
+<div class="col-sm-3 col-md-3 col-lg-3"></div>
+<div class="col-sm-6 col-md-6 col-lg-6">
+<h3>管理员登录</h3>
+<form method="post" asp-controller="Account" asp-action="Login" 
+   asp-route-returnurl = "@Model.ReturnUrl"> 
+      <div asp-validation-summary="ModelOnly"></div>
+
+      <div class="row"> 
+         <label asp-for="UserName" class="col-sm-4 col-md-4 col-lg-4">用户名：</label> 
+         <input asp-for="UserName" class="col-sm-4 col-md-4 col-lg-4"/> 
+         <span asp-validation-for="UserName" class="col-sm-4 col-md-4 col-lg-4"></span> 
+      </div>
+
+      <div class="row"> 
+         <label asp-for="Password" class="col-sm-4 col-md-4 col-lg-4">密码：</label> 
+         <input asp-for="Password" class="col-sm-4 col-md-4 col-lg-4"/>
+         <span asp-validation-for="Password" class="col-sm-4 col-md-4 col-lg-4"></span> 
+      </div>
+
+      <div class="row"> 
+         <label asp-for="RememberMe" class="col-sm-4 col-md-4 col-lg-4">记住我</label> 
+         <input asp-for="RememberMe" class="col-sm-4 col-md-4 col-lg-4" /> 
+         <span asp-validation-for="RememberMe" class="col-sm-4 col-md-4 col-lg-4"></span> 
+      </div> 
+      <div class="row">
+         <div class="col-sm-3 col-md-3 col-lg-3"></div>
+          <input type = "submit" value="登录" class="btn btn-info col-sm-5 col-md-5 col-lg-5" /> 
+          <div class="col-sm-4 col-md-4 col-lg-4"></div>
+      </div>
+</form>
+</div>
+<div class="col-sm-3 col-md-3 col-lg-3"></div>
+</div>
+		<div class="clearfix"> </div>
+</body>

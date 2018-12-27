@@ -1,0 +1,36 @@
+
+<script src="~/js/jquery-1.11.1.min.js"></script>
+@{
+	ViewData["Title"]="Mail";
+}
+<body>
+<!-- contact -->
+	<div class="contact">
+			<div class="col-md-5 contact-left">
+				<h1>地址</h1>
+				<p>中国 江苏省 常熟市
+					<span>26 56D Rescue,US</span></p>
+				<ul>
+					<li>固定电话 :+1 078 4589 2456</li>
+					<li>手机 :+1 078 4589 2456</li>
+					<li>传真 :+1 078 4589 2456</li>
+					<li><a href="mailto:info@example.com">info@example.com</a></li>
+				</ul>
+			</div>
+			<div class="col-md-7 contact-left">
+				<h2>联系方式</h2>
+				<form asp-controller="Home" asp-action="Mail" method="POST">
+					<input type="text" value="姓名" name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
+					<input type="email" value="邮箱" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '邮箱';}" required="">
+					<input type="text" value="电话" name="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '电话';}" required="">
+					<textarea type="text"  name="Infos" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的信息。。。';}" required="">您的信息。。。</textarea>
+					<input type="submit" value="提交" >
+				</form>
+			</div>
+			<div class="clearfix"> </div>
+	</div>
+	<div class="contact-bottom">
+		<iframe width="800" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://api.map.baidu.com/geocoder?address=常熟市黄河路777号佳和广场二幢414&coord_type=gcj02&output=html&src=webapp.baidu.openAPIdemo"></iframe>
+	</div>
+<!-- //contact -->
+</body>

@@ -1,0 +1,89 @@
+@{
+   Layout="/Views/ManageContent/_Layout.cshtml";
+   ViewBag.Title = "显示用户列表";
+}
+<div class="container">
+    <br/>
+    <br/>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+         <div class="col-sm-10 col-md-10 col-lg-10">
+             <div id="toolbar">
+                <button id="delete" class="btn btn-danger">删除</button>
+             </div>
+             <table id="listtable" data-click-to-select="true"></table>
+         </div>
+        <div class="col-sm-1 col-md-1 col-lg-1"></div>
+    </div>
+<script>
+       $table=$("#listtable");
+		 $table.bootstrapTable({
+            url:'/ManageContent/GetInfos',
+            method:'POST',                  //请求方式（*）
+            dataType:"json",
+            contentType:"application/x-www-form-urlencoded",
+            striped:true,                      //是否显示行间隔色
+            pagination:true,                   //是否显示分页（*）
+            sortable:true,                     //是否启用排序
+            sortOrder:"asc",     
+            clickToSelect:true,
+            search:true,
+            toolbar:'#toolbar',//工具栏按钮
+            sidePagination:"server",           //分页方式：client客户端分页，server服务端分页（*）
+            queryParamsType:'limit',
+            pageNumber:1,                       //初始化加载第一页，默认第一页
+            pageSize: 10,                       //每页的记录行数（*）
+            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            clickToSelect:true,
+            queryParams : function (params) {
+                    //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
+                    var temp = {   
+                        rows: params.limit,                         //页面大小
+                        page: (params.offset / params.limit) + 1,   //页码
+                        sort: params.sort,      //排序列名  
+                        sortOrder: params.order,
+                        search:params.search
+                    };
+                    return temp;
+                },
+            columns: [   {
+              checkbox:true
+            },{
+                field: 'id',
+                title: '编号'
+            }, {
+                field: 'userName',
+                title: '用户名',
+                formatter:function(value,row,index,field){
+                    if(value.length>8){
+                    var urls=value.slice(22,);
+                    return "<img src='"+urls+"' style='width:60px;height:60px;' alt='image'/>";
+                    }else{
+                        return value;
+                    }
+                }
+            }],
+            onLoadSuccess:function(){
+                console.info("加载成功");
+            },
+            onLoadError:function(){
+                console.info("加载数据失败");
+            }
+        });
+    $("#delete").click(function(){
+        var ids=$.map($table.bootstrapTable('getSelections'),function(row){return row.id});
+        alert(ids);
+        if (ids.length != 1 ) {
+            alert("请选择一行删除!");
+            return;
+        }
+        $.ajax({
+            url:'/Account/Delete?id='+ids,
+            method:'POST',
+            async:false,
+            cache:false,
+            success:function(){
+                location.reload(true);
+            }
+        });
+    });
+</script>

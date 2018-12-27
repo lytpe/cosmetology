@@ -1,0 +1,208 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cosmetology</title>
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Cinzel:400,700,900' rel='stylesheet' type='text/css'>
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+        <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+        <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Cinzel:400,700,900' rel='stylesheet' type='text/css'>
+    </environment>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+       <div class="header">
+		<div class="container">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+					<div class="logo">
+						<a class="navbar-brand" asp-controller="Home" asp-action="Index">Clinico</a>
+					</div>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="cl-effect-5" id="cl-effect-5">
+						<ul class="nav navbar-nav">
+							<li><a asp-controller="Home" asp-action="Index"><span data-hover="Home">Home</span></a></li>
+							<li><a asp-controller="Home" asp-action="About"><span data-hover="About Us">About Us</span></a></li>
+							<li><a asp-controller="Home" asp-action="Shortcodes"><span data-hover="Short Codes">Short Codes</span></a></li>
+							<li><a asp-controller="Home" asp-action="Mail"><span data-hover="Mail Us">Mail Us</span></a></li>
+						</ul>
+					</nav>
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+		</div>
+	</div>
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+        @RenderBody()
+        	<div class="footer">
+		<div>
+			<h3>Sign up for our newsletter</h3>
+			<p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus 
+				tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
+			<div class="footer-contact">
+				<form>
+					<input type="text" placeholder="Enter your email to update" required=" ">
+					<input type="submit" value="">
+				</form>
+			</div>
+			<div class="footer-grids">
+				<div class="col-md-3 footer-grid">
+					<p>HALOVIETNAM LTD
+						66, Dang Van ngu, Dong Da
+						Hanoi, Vietnam.
+					<a href="mailto:info@example.com">contact@example.com</a>
+					<p>电话: +844 35149182</p>
+				</div>
+				<div class="col-md-3 footer-grid">
+					<ul>
+						<li><a asp-controller="Home" asp-action="Mail">邮箱</a></li>
+						<li><a asp-controller="Home" asp-action="About">关于</a></li>
+						<li><a asp-controller="Home" asp-action="Shortcodes">Short Codes</a></li>
+						<li><a asp-controller="Home" asp-action="Index">主页</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid">
+					<ul>
+						<li><a asp-controller="Home" asp-action="Privacy">隐私政策</a></li>
+						<li><a asp-controller="Home" asp-action="Single">Terms & Conditions</a></li>
+						<li><a asp-controller="Home" asp-action="Support">支持</a></li>
+					</ul>
+				</div>
+				<div class="col-md-3 footer-grid">
+					<div class="footer-grid-left">
+						<a asp-controller="Home" asp-action="Single"><img src="~/images/4.jpg" alt=" " class="img-responsve" /></a>
+					</div>
+					<div class="footer-grid-left">
+						<a asp-controller="Home" asp-action="Single"><img src="~/images/5.jpg" alt=" " class="img-responsve" /></a>
+					</div>
+					<div class="footer-grid-left">
+						<a asp-controller="Home" asp-action="Single"><img src="~/images/6.jpg" alt=" " class="img-responsve" /></a>
+					</div>
+					<div class="footer-grid-left">
+						<a asp-controller="Home" asp-action="Single"><img src="~/images/7.jpg" alt=" " class="img-responsve" /></a>
+					</div>
+					<div class="footer-grid-left">
+						<a asp-controller="Home" asp-action="Single"><img src="~/images/8.jpg" alt=" " class="img-responsve" /></a>
+					</div>
+					<div class="footer-grid-left">
+						<a asp-controller="Home" asp-action="Single"><img src="~/images/9.jpg" alt=" " class="img-responsve" /></a>
+					</div>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="clearfix"> </div>
+			</div>
+			<div class="footer-copy">
+				<p>Copyright &copy; 2018.<a asp-controller="Account" asp-action="Login">Company Name</a> All rights</p>
+				<ul>
+					<li><a href="#" class="twitter"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Twitter"></span></a></li>
+					<li><a href="#" class="p"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Pinterest"></span></a></li>
+					<li><a href="#" class="facebook" id="facebook"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Facebook"></span></a></li>
+					<li><a href="#" class="dribble"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Dribbble"></span></a></li>
+					<li><a href="#" class="rss"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On RSS"></span></a></li>
+					<div class="clearfix"> </div>
+				</ul>
+				<script>
+					$(function () {
+					  $('[data-toggle="tooltip"]').tooltip()
+					})
+				</script>
+			</div>
+		</div>
+	</div>
+    </div>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+		<script src="~/js/jquery.wmuSlider.js"></script> 
+		<script>
+			$('.example1').wmuSlider();         
+		</script> 
+		<!-- start-smoth-scrolling -->
+		<script type="text/javascript" src="~/js/move-top.js"></script>
+		<script type="text/javascript" src="~/js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+				function hideURLbar(){ window.scrollTo(0,1); } 
+		</script>
+		<script type="text/javascript">$(document).ready(function() {$().UItoTop({ easingType: 'easeOutQuart' });	});
+		</script>
+    </environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+
+
+		<script src="~/js/jquery.wmuSlider.js"></script> 
+		<script>
+			$('.example1').wmuSlider();         
+		</script> 
+		<script type="text/javascript" src="~/js/move-top.js"></script>
+		<script type="text/javascript" src="~/js/easing.js"></script>
+		<script type="text/javascript">
+			jQuery(document).ready(function($) {
+				$(".scroll").click(function(event){		
+					event.preventDefault();
+					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+				});
+			});
+		</script>
+		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+				function hideURLbar(){ window.scrollTo(0,1); } 
+		</script>
+
+		<script type="text/javascript">$(document).ready(function() {$().UItoTop({ easingType: 'easeOutQuart' });	});
+		</script>
+    </environment>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
