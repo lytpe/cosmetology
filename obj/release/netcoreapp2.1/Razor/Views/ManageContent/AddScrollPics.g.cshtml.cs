@@ -62,12 +62,12 @@ using Cosmetology.Models;
 #line default
 #line hidden
             BeginContext(86, 973, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc34f5e977a14ebcafc7f4137f01e522", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5a32ad207924a3cbd678d50d05b3d25", async() => {
                 BeginContext(92, 39, true);
                 WriteLiteral("\r\n    <div class=\"container\">\r\n        ");
                 EndContext();
                 BeginContext(131, 907, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6517e7cfffb544afbcba122c6093f216", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "38b5ba9cc53e470faed83b2dd7c8408e", async() => {
                     BeginContext(208, 823, true);
                     WriteLiteral(@"
              <div class=""row"">

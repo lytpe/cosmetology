@@ -1,83 +1,36 @@
 @{
-	ViewData["Title"]="My";
+	ViewData["Title"]="首页";
 }
-<body>
-<!-- banner -->	
-	<div class="banner">
-			<div class="wmuSlider example1">
-				<div class="wmuSliderWrapper">
-					<article style="position: absolute; width: 100%; opacity: 0;"> 
-						<div class="banner-wrap">
-							<div class="banner1">
-							</div>
-						</div>
-					</article>
-					<article style="position: absolute; width: 100%; opacity: 0;"> 
-						<div class="banner-wrap">
-							<div class="banner2">
-							</div>
-						</div>
-					</article>
-					<article style="position: absolute; width: 100%; opacity: 0;"> 
-						<div class="banner-wrap">
-							<div class="banner3">
-							</div>
-						</div>
-					</article>
-				</div>
+<div class="container">
+	<div id="myCarousel" class="carousel slide">
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>   
+		<div class="carousel-inner">
+			<div class="item active">
+				<img src="../images/1.jpg" alt="First slide">
 			</div>
+			<div class="item">
+				<img src="../images/2.jpg" alt="Second slide">
+			</div>
+			<div class="item">
+				<img src="../images/3.jpg" alt="Third slide">
+			</div>
+		</div>
+		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			<span class="sr-only">Previous</span>
+		</a>
+		<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			<span class="sr-only">Next</span>
+		</a>
 	</div>
-<!-- //banner -->
-<!-- banner-bottom -->
-	<div class="banner-bottom">
-			<div class="banner-pos">
-				<div class="banner-pos-grid">
-					<div class="col-xs-4 banner-pos-grid1">
-						<span> </span>
-					</div>
-					<div class="col-xs-8 banner-pos-grid2">
-						<h3>Sed ut persp ciatis mers</h3>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-
-
-				<div class="banner-pos-grid banner-pos-grid-sub">
-					<div class="col-xs-4 banner-pos-grid1-sub">
-						<span> </span>
-					</div>
-					<div class="col-xs-8 banner-pos-grid2">
-						<h3>Nemo enim ipsam volup</h3>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-
-
-				<div class="banner-pos-grid banner-pos-grid-sub1">
-					<div class="col-xs-4 banner-pos-grid1-sub1">
-						<span> </span>
-					</div>
-					<div class="col-xs-8 banner-pos-grid2">
-						<h3>Quis autem velll eum</h3>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-
-				
-				<div class="banner-pos-grid banner-pos-grid-sub2">
-					<div class="col-xs-4 banner-pos-grid1-sub2">
-						<span> </span>
-					</div>
-					<div class="col-xs-8 banner-pos-grid2">
-						<h3>velit esse quam nihil</h3>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-				
-				<div class="clearfix"> </div>
-			</div>
-			<div class="banner-bottom-grids">
-				<div class="col-md-3 banner-bottom-grid">
+	<br/>
+	<div class="row">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h1>Sed ut perspiciatis unde quia</h1>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -87,7 +40,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 banner-bottom-grid">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h2>Excepteur sint occa ecat</h2>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -97,7 +50,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 banner-bottom-grid">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h3>nisi ut aliquid ex ea consequatur</h3>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -107,7 +60,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 banner-bottom-grid">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h3>eos et accusamus et iusto odio</h3>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -117,14 +70,10 @@
 						</div>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
-			</div>
 	</div>
-<!-- //banner-bottom -->
-<!-- events -->
-	<div class="events">
-			<div class="events-grids">
-				<div class="col-md-6 events-grid">
+	<br/>
+	<div class="row">
+			<div class="col-sm-8 col-md-8 col-lg-8">
 					<h3>voluptatem accusantium doloremque laudantium qui dolorem ipsum</h3>
 					<div class="events-grid-main">
 						<a class="link" href="#"></a>
@@ -132,7 +81,6 @@
 						<div class="arrow-left"></div>
 						<div class="rectangle"></div>
 					  </div>
-
 					  <div class="description">
 						<h4>Clinico</h4>
 						<p>Sintel is a short computer animated film by the Blender 
@@ -142,119 +90,18 @@
 					  </div>
 						<img src="~/images/4.jpg" alt=" " class="img-responsive" />
 					</div>
-				</div>
-				<div class="col-md-6 events-grid">
-					<div class="events-grid1">
-						<div class="col-md-4 events-grid1-left">
-							<h3>31 <span>Feb</span></h3>
-						</div>
-						<div class="col-md-8 events-grid1-right">
-							<h4><a asp-controller="Home" asp-action="Single">laudantium qui dolorem</a></h4>
-							<p>Blender Foundation Letraset sheets containing 
-								Lorem Ipsum passages, and more recently with desktop publishing software.</p>
-							<div class="more">
-								<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-					<div class="events-grid1">
-						<div class="col-md-4 events-grid1-left">
-							<h3>5 <span>March</span></h3>
-						</div>
-						<div class="col-md-8 events-grid1-right">
-							<h4><a asp-controller="Home" asp-action="Single">Sintel short computer</a></h4>
-							<p>Blender Foundation Letraset sheets containing 
-								Lorem Ipsum passages, and more recently with desktop publishing software.</p>
-							<div class="more">
-								<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-				</div>
-				<div class="clearfix"> </div>
 			</div>
+				<div class="col-sm-4 col-md-4 col-lg-4">
+						<div>
+							<h4><a asp-controller="Home" asp-action="Single" style="text-transform: capitalize;font-size: 1.3em;">laudantium qui dolorem</a></h4>
+							<p style="color: #999;font-size: 14px;margin: 1em 0 2em;line-height: 1.8em;">Blender Foundation Letraset sheets containing 
+								Lorem Ipsum passages, and more recently with desktop publishing software.</p>
+					    </div>
+						<div>
+							<h4><a asp-controller="Home" asp-action="Single" style="text-transform: capitalize;font-size: 1.3em;">Sintel short computer</a></h4>
+							<p style="color: #999;font-size: 14px;margin: 1em 0 2em;line-height: 1.8em;">Blender Foundation Letraset sheets containing 
+								Lorem Ipsum passages, and more recently with desktop publishing software.</p>
+						</div>
+			    </div>
 	</div>
-<!-- //events -->
-<!-- companies -->
-	<div class="companies">
-			<div class="companies-grids">
-				<ul id="flexiselDemo1">	
-					<li>
-						<div class="companies-grid1">
-							<div class="col-xs-4 banner-pos-grd1">
-								<span> </span>
-							</div>
-							<div class="col-xs-8 banner-pos-grd2">
-								<h3>Information For Patients</h3>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-					<li>
-						<div class="companies-grid1">
-							<div class="col-xs-4 banner-pos-grd2">
-								<span> </span>
-							</div>
-							<div class="col-xs-8 banner-pos-grd2">
-								<h3>Professional Training</h3>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-					<li>
-						<div class="companies-grid1">
-							<div class="col-xs-4 banner-pos-grd3">
-								<span> </span>
-							</div>
-							<div class="col-xs-8 banner-pos-grd2">
-								<h3>Resources For Professionals</h3>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-					<li>
-						<div class="companies-grid1">
-							<div class="col-xs-4 banner-pos-grd4">
-								<span> </span>
-							</div>
-							<div class="col-xs-8 banner-pos-grd2">
-								<h3>Patient Health Library</h3>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-					</li>
-				</ul>
-					<script type="text/javascript">
-						$(window).load(function() {
-						$("#flexiselDemo1").flexisel({
-							visibleItems: 4,
-							animationSpeed: 1000,
-							autoPlay: false,
-							autoPlaySpeed: 3000,    		
-							pauseOnHover: true,
-							enableResponsiveBreakpoints: true,
-							responsiveBreakpoints: { 
-								portrait: { 
-									changePoint:480,
-									visibleItems: 1
-								}, 
-								landscape: { 
-									changePoint:640,
-									visibleItems: 2
-								},
-								tablet: { 
-									changePoint:768,
-									visibleItems: 3
-								}
-							}
-						});
-						
-					 });
-					</script>
-					<script type="text/javascript" src="~/js/jquery.flexisel.js"></script>
-			</div>
-	</div>
-<!-- //companies -->
-</body>
+</div>

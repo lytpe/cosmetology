@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Cosmetology</title>
+    <title>@ViewData["Title"]</title>
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
@@ -23,57 +23,39 @@
     </environment>
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-       <div class="header">
-		<div class="container">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				  </button>
-					<div class="logo">
-						<a class="navbar-brand" asp-controller="Home" asp-action="Index">Clinico</a>
-					</div>
-				</div>
-
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-					<nav class="cl-effect-5" id="cl-effect-5">
-						<ul class="nav navbar-nav">
-							<li><a asp-controller="Home" asp-action="Index"><span data-hover="Home">Home</span></a></li>
-							<li><a asp-controller="Home" asp-action="About"><span data-hover="About Us">About Us</span></a></li>
-							<li><a asp-controller="Home" asp-action="Shortcodes"><span data-hover="Short Codes">Short Codes</span></a></li>
-							<li><a asp-controller="Home" asp-action="Mail"><span data-hover="Mail Us">Mail Us</span></a></li>
-						</ul>
-					</nav>
-				</div>
-				<!-- /.navbar-collapse -->
-			</nav>
-		</div>
-	</div>
-        </div>
-    </nav>
-
     <partial name="_CookieConsentPartial" />
-
-    <div class="container body-content">
-        @RenderBody()
-        	<div class="footer">
-		<div>
-			<h3>Sign up for our newsletter</h3>
-			<p class="para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus 
-				tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
-			<div class="footer-contact">
-				<form>
-					<input type="text" placeholder="Enter your email to update" required=" ">
-					<input type="submit" value="">
-				</form>
+	<div class="col-sm-12 col-md-12 col-lg-12">
+	  <nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="header">
+					<nav class="navbar navbar-default">
+						<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+							<div class="logo">
+								<a class="navbar-brand" asp-controller="Home" asp-action="Index">Clinico</a>
+							</div>
+						</div>
+						<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+							<nav class="cl-effect-5" id="cl-effect-5">
+								<ul class="nav navbar-nav">
+									<li><a asp-controller="Home" asp-action="Index"><span data-hover="Home">Home</span></a></li>
+									<li><a asp-controller="Home" asp-action="About"><span data-hover="About Us">About Us</span></a></li>
+									<li><a asp-controller="Home" asp-action="Shortcodes"><span data-hover="Short Codes">Short Codes</span></a></li>
+									<li><a asp-controller="Home" asp-action="Mail"><span data-hover="Mail Us">Mail Us</span></a></li>
+								</ul>
+							</nav>
+						</div>
+					</nav>
 			</div>
+		</div>
+	  </nav></div>
+    @RenderBody()
+	<div class="footer">
 			<div class="footer-grids">
 				<div class="col-md-3 footer-grid">
 					<p>HALOVIETNAM LTD
@@ -132,33 +114,17 @@
 				</ul>
 				<script>
 					$(function () {
-					  $('[data-toggle="tooltip"]').tooltip()
+					$('[data-toggle="tooltip"]').tooltip()
 					})
 				</script>
 			</div>
-		</div>
 	</div>
-    </div>
 
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-		<script src="~/js/jquery.wmuSlider.js"></script> 
-		<script>
-			$('.example1').wmuSlider();         
-		</script> 
-		<!-- start-smoth-scrolling -->
 		<script type="text/javascript" src="~/js/move-top.js"></script>
 		<script type="text/javascript" src="~/js/easing.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 				function hideURLbar(){ window.scrollTo(0,1); } 
 		</script>
@@ -178,23 +144,8 @@
                 crossorigin="anonymous"
                 integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
         </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-
-
-		<script src="~/js/jquery.wmuSlider.js"></script> 
-		<script>
-			$('.example1').wmuSlider();         
-		</script> 
 		<script type="text/javascript" src="~/js/move-top.js"></script>
 		<script type="text/javascript" src="~/js/easing.js"></script>
-		<script type="text/javascript">
-			jQuery(document).ready(function($) {
-				$(".scroll").click(function(event){		
-					event.preventDefault();
-					$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
-				});
-			});
-		</script>
 		<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 				function hideURLbar(){ window.scrollTo(0,1); } 
 		</script>

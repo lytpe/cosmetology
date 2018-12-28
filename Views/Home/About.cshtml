@@ -1,12 +1,11 @@
-
-<script src="~/js/jquery-1.11.1.min.js"></script>
-
-<body>
-
-<!-- banner-bottom -->
-	<div class="banner-bottom">
-			<div class="banner-bottom-grids banner-bottom-grids1">
-				<div class="col-md-3 banner-bottom-grid">
+@{
+	ViewData["Title"]="关于我们";
+}
+<div class="container">
+	<br/>
+	<br/>
+	<div class="row">
+				<div class="col-md-3 col-sm-6 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h1>Sed ut perspiciatis unde quia</h1>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -16,7 +15,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 banner-bottom-grid">
+				<div class="col-md-3 col-sm-6 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h2>Excepteur sint occa ecat</h2>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -26,7 +25,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 banner-bottom-grid">
+				<div class="col-md-3 col-sm-6 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h3>nisi ut aliquid ex ea consequatur</h3>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -36,7 +35,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3 banner-bottom-grid">
+				<div class="col-md-3 col-sm-6 col-lg-3">
 					<div class="banner-bottom-grid1">
 						<h3>eos et accusamus et iusto odio</h3>
 						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
@@ -46,59 +45,54 @@
 						</div>
 					</div>
 				</div>
-				<div class="clearfix"> </div>
-			</div>
 	</div>
-<!-- //banner-bottom -->
-<!-- history -->
-	<div class="history">
-			<div class="history-grids">
-				<div class="col-md-6 history-grid-left">
-					<h3>History</h3>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus 
-						tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
-					<img src="~/images/6.jpg" alt=" " class="img-responsive" />
-				</div>
-				<div class="col-md-6 history-grid-right">
-					<h3>Testimonials</h3>
-					<div class="history-grid-right-grids">
-						<div class="about-bottom-grid-right-grid">
-							<div class="about-bottom-grid-right-grdl">
-								<img src="~/images/10.jpg" alt=" " class="img-responsive" />
-							</div>
-							<div class="about-bottom-grid-right-grdr">
-								<p><span>N</span>eque porro quisquam est, 
-									qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-									sed quia non numquam eius modi.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="about-bottom-grid-right-grid">
-							<div class="about-bottom-grid-right-grdl">
-								<img src="~/images/11.jpg" alt=" " class="img-responsive" />
-							</div>
-							<div class="about-bottom-grid-right-grdr">
-								<p><span>R</span>eque porro quisquam est, 
-									qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-									sed quia non numquam eius modi.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="about-bottom-grid-right-grid">
-							<div class="about-bottom-grid-right-grdl">
-								<img src="~/images/12.jpg" alt=" " class="img-responsive" />
-							</div>
-							<div class="about-bottom-grid-right-grdr">
-								<p><span>S</span>eque porro quisquam est, 
-									qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
-									sed quia non numquam eius modi.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
+	<br/>
+	<br/>
+	<div class="row">
+			<div class="col-md-6 col-sm-12 col-lg-6">
+				<h3 style="font-size: 2em;color: #222C56;line-height: 1.5em;">History</h3>
+				<p style="margin: .5em 0 0;color: #999;line-height: 1.8em;font-size: 14px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus 
+					tristique bibendum. Donec rutrum sed sem quis venenatis.</p>
+				<img src="~/images/6.jpg" alt=" " class="img-responsive" />
+			</div>
+			<div class="col-md-6 col-sm-12 col-lg-6">
+				<h3 style="font-size: 2em;color: #222C56;line-height: 1.5em;">Testimonials</h3>
+
+				<br/>
+				<div class="row">
+					<div class="col-sm-4 col-md-4 col-lg-4">
+						<img src="~/images/10.jpg" alt=" " class="img-responsive" />
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<p>eque porro quisquam est, 
+							qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+							sed quia non numquam eius modi.</p>
 					</div>
 				</div>
-				<div class="clearfix"></div>
+				<br/>
+				<div class="row">
+					<div class="col-sm-4 col-md-4 col-lg-4">
+						<img src="~/images/11.jpg" alt=" " class="img-responsive" />
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<p><span>R</span>eque porro quisquam est, 
+							qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+							sed quia non numquam eius modi.</p>
+					</div>
+				</div>
+				<br/>
+				<div class="row">
+					<div class="col-sm-4 col-md-4 col-lg-4">
+						<img src="~/images/12.jpg" alt=" " class="img-responsive" />
+					</div>
+					<div class="col-sm-8 col-md-8 col-lg-8">
+						<p><span>S</span>eque porro quisquam est, 
+							qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, 
+							sed quia non numquam eius modi.</p>
+					</div>
+				</div>
 			</div>
 	</div>
-<!-- //history -->
-</body>
+	<br/>
+	<br/>
+</div>

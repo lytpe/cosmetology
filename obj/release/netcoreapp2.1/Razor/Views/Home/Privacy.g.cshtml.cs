@@ -55,7 +55,7 @@ using Cosmetology.Models;
             WriteLiteral("\r\n<!-- js -->\r\n");
             EndContext();
             BeginContext(15, 49, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bfac640b273b46b1a4e4f0c3619b9abf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cb1328c63c774a7fb499ff13757ae02d", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -73,7 +73,7 @@ using Cosmetology.Models;
             WriteLiteral("\r\n\r\n\t\r\n");
             EndContext();
             BeginContext(71, 3112, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "79b3aed20f464da59014ae55930759c7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9a6e16309c1e41d081f4e3b7deb490ef", async() => {
                 BeginContext(77, 3099, true);
                 WriteLiteral(@"
 <!-- privacy -->

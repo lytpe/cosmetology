@@ -95,7 +95,7 @@ ul.nav.navbar-nav li a.active {
 /*-- //header --*/
 /*-- banner --*/
 .banner1{
-	background:url(../images/1.jpg) no-repeat 0px 0px;
+/*	background:url(../images/1.jpg) no-repeat 0px 0px;*/
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -103,7 +103,7 @@ ul.nav.navbar-nav li a.active {
 	-ms-background-size:cover;
 }
 .banner2{
-	background:url(../images/2.jpg) no-repeat 0px 0px;
+	/*background:url(../images/2.jpg) no-repeat 0px 0px;*/
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
@@ -111,7 +111,7 @@ ul.nav.navbar-nav li a.active {
 	-ms-background-size:cover;
 }
 .banner3{
-	background:url(../images/3.jpg) no-repeat 0px 0px;
+	/*background:url(../images/3.jpg) no-repeat 0px 0px;*/
 	background-size:cover;
 	-webkit-background-size:cover;
 	-moz-background-size:cover;
