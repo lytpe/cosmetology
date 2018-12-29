@@ -26,6 +26,7 @@ namespace Cosmetology.Controllers{
 //因为密码规则必须是 6 个字符以上且包含一个大写字母和小写字母，且必须包含一个非数组字母字符
 //tpe   Tpe$123
         [Authorize]
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model){
             if(ModelState.IsValid){
@@ -43,6 +44,8 @@ namespace Cosmetology.Controllers{
             }
             return RedirectToAction("Index","ManageContent");
         }
+        [Authorize]
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Delete(string id){
             using(ModelsDBContext md=new ModelsDBContext()){
@@ -54,6 +57,7 @@ namespace Cosmetology.Controllers{
             return View("Show","ManageContent");
         }
         [Authorize]
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Logout(){
             await _signManager.SignOutAsync();
@@ -65,6 +69,7 @@ namespace Cosmetology.Controllers{
             var model =new LoginViewModel{ReturnUrl=returnUrl};
             return View(model);
         }
+        [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {

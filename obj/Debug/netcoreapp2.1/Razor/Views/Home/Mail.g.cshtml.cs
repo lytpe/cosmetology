@@ -78,7 +78,7 @@ using Cosmetology.Models;
 				");
             EndContext();
             BeginContext(507, 693, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86c5766c413148cb912d70c7953910bf", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cbb35b96c4f74eb4b39ff4b44a6db428", async() => {
                 BeginContext(567, 626, true);
                 WriteLiteral(@"
 					<input type=""text"" value=""姓名"" name=""Name"" onfocus=""this.value = '';"" onblur=""if (this.value == '') {this.value = '姓名';}"" required="""">

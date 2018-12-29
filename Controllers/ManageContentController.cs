@@ -14,45 +14,43 @@ namespace Cosmetology.Controllers{
 
     [Authorize]
     public class ManageContentController:Controller{
+        private ModelsDBContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
-        public ManageContentController(IHostingEnvironment hostingEnvironment)
+
+        public ManageContentController(IHostingEnvironment hostingEnvironment,ModelsDBContext context)
         {
             _hostingEnvironment = hostingEnvironment;
+            _context=context;
         }
-     
         public IActionResult Index(){
             return View();
         }
-
         #region 添加通用文章
         public IActionResult AddArticles(){
             return View();
         }
         [HttpPost]
-
-        public async Task<IActionResult> AddArticles(Articles articles){
-            using(ModelsDBContext modelsDB=new ModelsDBContext()){
-                Articles Articles=new Articles();
-                Articles.ArticleName=articles.ArticleName;
-                //Articles.ArticleImgUrl=articles.ArticleImgUrl;
-               // Articles.ArticleMoiveUrl=articles.ArticleMoiveUrl;
-                Articles.ArticleContext=articles.ArticleContext;
-                Articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
-                Articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
-                Articles.UserName=User.Identity.Name;
-
-                Updates updates=new Updates();
-                updates.UpdateContent=articles.ArticleName;
-                updates.UpdateDate=Convert.ToString(DateTime.Now);
-                updates.UpdateType="产品内容";
-                updates.UpdateUserName=User.Identity.Name;
-                try{
-                modelsDB.Add(Articles);
-                modelsDB.Add(updates);
-                await modelsDB.SaveChangesAsync();
-                return View("Index");
-                }catch{}
-            }
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddArticles(Articles articles){        
+            Articles Articles=new Articles();
+            Articles.ArticleName=articles.ArticleName;
+            //Articles.ArticleImgUrl=articles.ArticleImgUrl;
+            // Articles.ArticleMoiveUrl=articles.ArticleMoiveUrl;
+            Articles.ArticleContext=articles.ArticleContext;
+            Articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
+            Articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
+            Articles.UserName=User.Identity.Name;
+            Updates updates=new Updates();
+            updates.UpdateContent=articles.ArticleName;
+            updates.UpdateDate=Convert.ToString(DateTime.Now);
+            updates.UpdateType="产品内容";
+            updates.UpdateUserName=User.Identity.Name;
+            try{
+            _context.Add(Articles);
+            _context.Add(updates);
+            await _context.SaveChangesAsync();
+            return View("Index");
+            }catch{}
             return View("Error");
         }
         #endregion
@@ -61,9 +59,8 @@ namespace Cosmetology.Controllers{
             return View();
         }
         [HttpPost]
-
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddFeatures(Features feature){
-            using(ModelsDBContext modelsDB=new ModelsDBContext()){
                 Features f=new Features();
                 f.ArticleContext=feature.ArticleContext;
                 f.ArticleCreateDate=Convert.ToString(DateTime.Now);
@@ -78,22 +75,20 @@ namespace Cosmetology.Controllers{
                 updates.UpdateType="企业内容";
                 updates.UpdateUserName=User.Identity.Name;
                 try{
-                modelsDB.Add(feature);
-                modelsDB.Add(updates);
-                await modelsDB.SaveChangesAsync();
+                _context.Add(feature);
+                _context.Add(updates);
+                await _context.SaveChangesAsync();
                 return View("Index");
                 }catch{}
-            }
             return  View("Error");
         }
         #endregion
         #region 添加视频信息
-
         public IActionResult AddMovies(){
             return View();
         }
         [HttpPost]
-    
+        [ValidateAntiForgeryToken]   
         public async Task<IActionResult> AddMovies(Movies movie){
             var files=Request.Form.Files;
            // string WebRootPath=_hostingEnvironment.WebRootPath; //该路径为启动后wwwroot下的路径
@@ -105,7 +100,6 @@ namespace Cosmetology.Controllers{
                     using(var stream=new FileStream(filePath,FileMode.Create)){
                         await file.CopyToAsync(stream);
                     }
-                    using(ModelsDBContext modelsDB=new ModelsDBContext()){
                         Movies movies=new Movies();
                         movies.MovieName=fileName;
                         movies.MovieUrl=filePath;
@@ -116,15 +110,13 @@ namespace Cosmetology.Controllers{
                         updates.UpdateDate=Convert.ToString(DateTime.Now);
                         updates.UpdateType="视频文件";
                         updates.UpdateUserName=User.Identity.Name;
-
                         try{
-                        modelsDB.Add(movies);
-                        modelsDB.Add(updates);
-                        await modelsDB.SaveChangesAsync();
+                        _context.Add(movies);
+                        _context.Add(updates);
+                        await _context.SaveChangesAsync();
                         }catch{}   
                     }  
                 }
-            }
             return View("Index");
         }
         #endregion
@@ -134,7 +126,7 @@ namespace Cosmetology.Controllers{
             return View();
         }
         [HttpPost]
-       
+        [ValidateAntiForgeryToken]      
         public async Task<IActionResult> AddScrollPics(ScrollPics scrollpic){
              var files=Request.Form.Files;
             // var allowType=new string[]{"image/jpg","image/png","jpg","png"};
@@ -145,25 +137,22 @@ namespace Cosmetology.Controllers{
                          string path=_hostingEnvironment.WebRootPath+"/contents/images/"+filename;
                          using(var stream=new FileStream(path,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
                                 await file.CopyToAsync(stream);
-                                using(ModelsDBContext modelsDB=new ModelsDBContext()){
-                                        ScrollPics scroll=new ScrollPics();
-                                        scroll.UserName=User.Identity.Name;
-                                        scroll.PicName=scrollpic.PicName;
-                                        scroll.ImgUrl=path;
-                                        scroll.ImgCreateDate=Convert.ToString(DateTime.Now);
-
-                                        Updates updates=new Updates();
-                                        updates.UpdateContent=path;
-                                        updates.UpdateDate=Convert.ToString(DateTime.Now);
-                                        updates.UpdateType="轮播图";
-                                        updates.UpdateUserName=User.Identity.Name;
-                                        try{
-                                        modelsDB.Add(scroll);
-                                        modelsDB.Add(updates);
-                                        await modelsDB.SaveChangesAsync();
-                                        }catch{}
-                                        return View("Index");
-                                    }  
+                                ScrollPics scroll=new ScrollPics();
+                                scroll.UserName=User.Identity.Name;
+                                scroll.PicName=scrollpic.PicName;
+                                scroll.ImgUrl=path;
+                                scroll.ImgCreateDate=Convert.ToString(DateTime.Now);
+                                Updates updates=new Updates();
+                                updates.UpdateContent=path;
+                                updates.UpdateDate=Convert.ToString(DateTime.Now);
+                                updates.UpdateType="轮播图";
+                                updates.UpdateUserName=User.Identity.Name;
+                                try{
+                                _context.Add(scroll);
+                                _context.Add(updates);
+                                await _context.SaveChangesAsync();
+                                }catch{}
+                                return View("Index");
                         }
                      }
                  }
@@ -177,8 +166,6 @@ namespace Cosmetology.Controllers{
              return View("Error");
         }
         #endregion 
-
-
         #region 客户信息显示
         public IActionResult MessageManage(){
             return View();
@@ -190,15 +177,13 @@ namespace Cosmetology.Controllers{
             string searchtext=Request.Form["search"];
             List<Messages> messages=new List<Messages>();
             int count=0;
-            using(var model=new ModelsDBContext()){
-                if(searchtext.Equals("")){
-                count=model.Message.Count();
-                messages=model.Message.Skip((currentpageIndex-1)*10).Take(currentpageSize).ToList();
-                }
-                else{
-                    messages=model.Message.Where(p=>p.Name.Equals(searchtext)).ToList();
-                    count=model.Message.Where(p=>p.Name.Equals(searchtext)).Count();
-                }
+            if(searchtext.Equals("")){
+            count=_context.Message.Count();
+            messages=_context.Message.Skip((currentpageIndex-1)*10).Take(currentpageSize).ToList();
+            }
+            else{
+                messages=_context.Message.Where(p=>p.Name.Equals(searchtext)).ToList();
+                count=_context.Message.Where(p=>p.Name.Equals(searchtext)).Count();
             }
             return Json(new {total=count,rows=messages});
         }
@@ -214,36 +199,51 @@ namespace Cosmetology.Controllers{
             string searchtext=Request.Form["search"];
             List<Updates> updates=new List<Updates>();
             int count=0;
-            using(ModelsDBContext models=new ModelsDBContext()){
-                
-                if(searchtext.Equals("")){
-                updates=models.Updates.Skip((currentpageIndex-1)*currentpageSize).Take(currentpageSize).ToList();
-                count=models.Updates.Count();
-                }else{
-                    updates=models.Updates.Where(p=>p.UpdateType.Equals(searchtext)).ToList();
-                    count=models.Updates.Where(p=>p.UpdateType.Equals(searchtext)).Count();
-                }
+            if(searchtext.Equals("")){
+            updates=_context.Updates.Skip((currentpageIndex-1)*currentpageSize).Take(currentpageSize).ToList();
+            count=_context.Updates.Count();
+            }else{
+                updates=_context.Updates.Where(p=>p.UpdateType.Equals(searchtext)).ToList();
+                count=_context.Updates.Where(p=>p.UpdateType.Equals(searchtext)).Count();
             }
             return Json(new {total=count,rows=updates});
         }
         #endregion 
-        public IActionResult Delete(string type,string name){
+        [HttpPost]
+        public async Task<IActionResult> Delete(int id){
+             Updates up=new Updates();
+             up=_context.Updates.Find(id);
+             if(up.UpdateType.Equals("产品内容")){
+                 Articles m=_context.Article.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
+                 _context.Remove(m);
+                 await _context.SaveChangesAsync();
+             }else if(up.UpdateType.Equals("企业内容")){
+                 Features m=_context.Feature.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
+                 _context.Remove(m);
+                 await _context.SaveChangesAsync();
+             }
+             else if(up.UpdateType.Equals("视频文件")){
+                 Movies m=_context.Movie.SingleOrDefault(p=>p.MovieName.Equals(up.UpdateContent));
+                 _context.Remove(m);
+                 await _context.SaveChangesAsync();
+               
+             }else if(up.UpdateType.Equals("轮播图")){
+                 ScrollPics s=_context.ScrollPic.SingleOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
+                 _context.Remove(s);
+                 await _context.SaveChangesAsync();
+             }
+             _context.Remove(up);
+             await _context.SaveChangesAsync();
            return View();
         }
         [HttpPost]
         public async Task<IActionResult> DeleteMessage(int id){
-            using(ModelsDBContext md=new ModelsDBContext()){
-                 Messages me=new Messages();
-                 me=md.Message.Find(id);
-                 md.Remove(me);
-                 await md.SaveChangesAsync();
-            }
+            Messages me=new Messages();
+            me=_context.Message.Find(id);
+            _context.Remove(me);
+            await _context.SaveChangesAsync();
             return View("MessageManage");
         }
-
-
-
-
 
          //显示用户列表
         public IActionResult Show(){
@@ -256,16 +256,13 @@ namespace Cosmetology.Controllers{
             string searchtext=Request.Form["search"];
             List<Users> users=new List<Users>();
             int count=0;
-            using(ModelsDBContext models=new ModelsDBContext()){
-                
                 if(searchtext.Equals("")){
-                users=models.Users.Skip((currentpageIndex-1)*currentpageSize).Take(currentpageSize).ToList();
-                count=models.Users.Count();
+                users=_context.Users.Skip((currentpageIndex-1)*currentpageSize).Take(currentpageSize).ToList();
+                count=_context.Users.Count();
                 }else{
-                    users=models.Users.Where(p=>p.UserName.Equals(searchtext)).ToList();
-                    count=models.Users.Where(p=>p.UserName.Equals(searchtext)).Count();
+                    users=_context.Users.Where(p=>p.UserName.Equals(searchtext)).ToList();
+                    count=_context.Users.Where(p=>p.UserName.Equals(searchtext)).Count();
                 }
-            }
             return Json(new {total=count,rows=users});
         }
 

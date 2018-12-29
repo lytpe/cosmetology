@@ -86,13 +86,13 @@
             alert("请选择一行删除!");
             return;
         }
-        /*$.ajax({
+        $.ajax({
             url:'/ManageContent/Delete?id='+ids,
-            async:false,
+            method:'POST',
             cache:false,
             success:function(){
                 location.reload(true);
             }
-        });*/
+        });
     });
 </script>
