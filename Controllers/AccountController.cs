@@ -12,10 +12,12 @@ namespace Cosmetology.Controllers{
     public class AccountController:Controller{
         private SignInManager<Users> _signManager;
         private UserManager<Users> _userManager;
+        private ModelsDBContext _context;
 
-        public AccountController(UserManager<Users> userManager,SignInManager<Users> signInManager){
+        public AccountController(UserManager<Users> userManager,SignInManager<Users> signInManager,ModelsDBContext context){
             _userManager=userManager;
             _signManager=signInManager;
+            _context=context;
         }
 
         [Authorize]
@@ -48,12 +50,10 @@ namespace Cosmetology.Controllers{
         [ValidateAntiForgeryToken]
         [HttpPost]
         public async Task<IActionResult> Delete(string id){
-            using(ModelsDBContext md=new ModelsDBContext()){
-                Users users=new Users();
-                users=md.Users.Find(id);
-                md.Remove(users);
-                await md.SaveChangesAsync();
-            }
+            Users users=new Users();
+            users=_context.Users.Find(id);
+            _context.Remove(users);
+            await _context.SaveChangesAsync();
             return View("Show","ManageContent");
         }
         [Authorize]
