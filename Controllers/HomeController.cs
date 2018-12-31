@@ -24,10 +24,6 @@ namespace Cosmetology.Controllers
         {
             return View();
         }
-
-        public IActionResult Shortcodes(){
-            return View();
-        }
         public IActionResult Single(){
             return View();
         }

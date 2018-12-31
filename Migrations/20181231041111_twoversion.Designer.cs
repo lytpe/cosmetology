@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cosmetology.Migrations
 {
     [DbContext(typeof(ModelsDBContext))]
-    [Migration("20181119052406_threeversion")]
-    partial class threeversion
+    [Migration("20181231041111_twoversion")]
+    partial class twoversion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,13 +23,13 @@ namespace Cosmetology.Migrations
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("Areas");
+
                     b.Property<string>("ArticleContext");
 
                     b.Property<string>("ArticleCreateDate");
 
                     b.Property<string>("ArticleImgUrl");
-
-                    b.Property<string>("ArticleMoiveUrl");
 
                     b.Property<string>("ArticleName");
 
@@ -40,30 +40,6 @@ namespace Cosmetology.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Article");
-                });
-
-            modelBuilder.Entity("Cosmetology.Models.Features", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("ArticleContext");
-
-                    b.Property<string>("ArticleCreateDate");
-
-                    b.Property<string>("ArticleImgUrl");
-
-                    b.Property<string>("ArticleMovieUrl");
-
-                    b.Property<string>("ArticleName");
-
-                    b.Property<string>("ArticleUpdateDate");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Feature");
                 });
 
             modelBuilder.Entity("Cosmetology.Models.Messages", b =>
@@ -86,22 +62,6 @@ namespace Cosmetology.Migrations
                     b.ToTable("Message");
                 });
 
-            modelBuilder.Entity("Cosmetology.Models.Movies", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("MovieName");
-
-                    b.Property<string>("MovieUrl");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("Movie");
-                });
-
             modelBuilder.Entity("Cosmetology.Models.ScrollPics", b =>
                 {
                     b.Property<int>("ID")
@@ -118,6 +78,26 @@ namespace Cosmetology.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("ScrollPic");
+                });
+
+            modelBuilder.Entity("Cosmetology.Models.Updates", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Areas");
+
+                    b.Property<string>("UpdateContent");
+
+                    b.Property<string>("UpdateDate");
+
+                    b.Property<string>("UpdateType");
+
+                    b.Property<string>("UpdateUserName");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Updates");
                 });
 
             modelBuilder.Entity("Cosmetology.Models.Users", b =>

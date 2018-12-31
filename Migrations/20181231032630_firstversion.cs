@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Cosmetology.Migrations
 {
-    public partial class threeversion : Migration
+    public partial class firstversion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -18,8 +18,8 @@ namespace Cosmetology.Migrations
                     ArticleCreateDate = table.Column<string>(nullable: true),
                     ArticleUpdateDate = table.Column<string>(nullable: true),
                     ArticleImgUrl = table.Column<string>(nullable: true),
-                    ArticleMoiveUrl = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
+                    UserName = table.Column<string>(nullable: true),
+                    Areas = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -66,25 +66,6 @@ namespace Cosmetology.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Feature",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    ArticleName = table.Column<string>(nullable: true),
-                    ArticleContext = table.Column<string>(nullable: true),
-                    ArticleImgUrl = table.Column<string>(nullable: true),
-                    ArticleMovieUrl = table.Column<string>(nullable: true),
-                    ArticleCreateDate = table.Column<string>(nullable: true),
-                    ArticleUpdateDate = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Feature", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Message",
                 columns: table => new
                 {
@@ -102,21 +83,6 @@ namespace Cosmetology.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Movie",
-                columns: table => new
-                {
-                    ID = table.Column<int>(nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    MovieName = table.Column<string>(nullable: true),
-                    MovieUrl = table.Column<string>(nullable: true),
-                    UserName = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Movie", x => x.ID);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ScrollPic",
                 columns: table => new
                 {
@@ -130,6 +96,23 @@ namespace Cosmetology.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ScrollPic", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Updates",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    UpdateContent = table.Column<string>(nullable: true),
+                    UpdateType = table.Column<string>(nullable: true),
+                    Areas = table.Column<string>(nullable: true),
+                    UpdateDate = table.Column<string>(nullable: true),
+                    UpdateUserName = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Updates", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(
@@ -297,16 +280,13 @@ namespace Cosmetology.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Feature");
-
-            migrationBuilder.DropTable(
                 name: "Message");
 
             migrationBuilder.DropTable(
-                name: "Movie");
+                name: "ScrollPic");
 
             migrationBuilder.DropTable(
-                name: "ScrollPic");
+                name: "Updates");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

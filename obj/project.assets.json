@@ -8625,7 +8625,7 @@
       ]
     },
     "System.Interactive.Async/3.2.0": {
-      "sha512": "oaK7GqF8/ORnipYZck5ec+eKgvfZFShH64CWFlYB8Mpnr8/e99klLSk9SsmnaDzr9n2X672sUU8ZCLLrq8leDw==",
+      "sha512": "T3nigy9yShklMyVu7I2TvlVMRy2vUn9oQeBaRy0KZcOptyy+rUbekYaXxoa3s0h2tWT3UVtzrGkQC89CBbCtlg==",
       "type": "package",
       "path": "system.interactive.async/3.2.0",
       "files": [
@@ -11832,23 +11832,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jishubu1\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "/Users/tpe/.nuget/packages/": {},
+    "/usr/local/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Cosmetology\\Cosmetology.csproj",
+      "projectUniqueName": "/Users/tpe/Desktop/cosmetology/Cosmetology.csproj",
       "projectName": "Cosmetology",
-      "projectPath": "d:\\Cosmetology\\Cosmetology.csproj",
-      "packagesPath": "C:\\Users\\jishubu1\\.nuget\\packages\\",
-      "outputPath": "d:\\Cosmetology\\obj\\",
+      "projectPath": "/Users/tpe/Desktop/cosmetology/Cosmetology.csproj",
+      "packagesPath": "/Users/tpe/.nuget/packages/",
+      "outputPath": "/Users/tpe/Desktop/cosmetology/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\jishubu1\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/Users/tpe/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.1"

@@ -2,7 +2,7 @@
 
 namespace Cosmetology.Migrations
 {
-    public partial class five : Migration
+    public partial class twoversion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

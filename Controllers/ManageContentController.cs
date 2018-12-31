@@ -31,96 +31,31 @@ namespace Cosmetology.Controllers{
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddArticles(Articles articles){        
-            Articles Articles=new Articles();
-            Articles.ArticleName=articles.ArticleName;
-            //Articles.ArticleImgUrl=articles.ArticleImgUrl;
-            // Articles.ArticleMoiveUrl=articles.ArticleMoiveUrl;
-            Articles.ArticleContext=articles.ArticleContext;
-            Articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
-            Articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
-            Articles.UserName=User.Identity.Name;
+        public async Task<IActionResult> AddArticles(Articles article){        
+            Articles articles=new Articles();
+            articles.ArticleName=article.ArticleName;
+            articles.ArticleSideName=article.ArticleSideName;
+            articles.ArticleImgUrl=article.ArticleImgUrl;
+            articles.ArticleContext=article.ArticleContext;
+            articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
+            articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
+            articles.UserName=User.Identity.Name;
+        
+
             Updates updates=new Updates();
-            updates.UpdateContent=articles.ArticleName;
+            updates.UpdateContent=article.ArticleName;
             updates.UpdateDate=Convert.ToString(DateTime.Now);
-            updates.UpdateType="产品内容";
+            updates.UpdateType="";
             updates.UpdateUserName=User.Identity.Name;
             try{
-            _context.Add(Articles);
+            _context.Add(articles);
             _context.Add(updates);
             await _context.SaveChangesAsync();
             return View("Index");
             }catch{}
             return View("Error");
         }
-        #endregion
-        #region 添加企业特征信息
-        public IActionResult AddFeatures(){
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddFeatures(Features feature){
-                Features f=new Features();
-                f.ArticleContext=feature.ArticleContext;
-                f.ArticleCreateDate=Convert.ToString(DateTime.Now);
-                //f.ArticleImgUrl=feature.ArticleImgUrl;
-               // f.ArticleMovieUrl=feature.ArticleMovieUrl;
-                f.ArticleName=feature.ArticleName;
-                f.ArticleUpdateDate=Convert.ToString(DateTime.Now);
-                f.UserName=User.Identity.Name;
-                Updates updates=new Updates();
-                updates.UpdateContent=feature.ArticleName;
-                updates.UpdateDate=Convert.ToString(DateTime.Now);
-                updates.UpdateType="企业内容";
-                updates.UpdateUserName=User.Identity.Name;
-                try{
-                _context.Add(feature);
-                _context.Add(updates);
-                await _context.SaveChangesAsync();
-                return View("Index");
-                }catch{}
-            return  View("Error");
-        }
-        #endregion
-        #region 添加视频信息
-        public IActionResult AddMovies(){
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]   
-        public async Task<IActionResult> AddMovies(Movies movie){
-            var files=Request.Form.Files;
-           // string WebRootPath=_hostingEnvironment.WebRootPath; //该路径为启动后wwwroot下的路径
-            string webPath=_hostingEnvironment.WebRootPath;//该路径为程序内容路径
-            foreach(var file in files){
-                if(file.Length>0){
-                    string fileName=Path.GetFileName(file.FileName);
-                    var filePath=webPath+"/contents/movies/"+fileName;
-                    using(var stream=new FileStream(filePath,FileMode.Create)){
-                        await file.CopyToAsync(stream);
-                    }
-                        Movies movies=new Movies();
-                        movies.MovieName=fileName;
-                        movies.MovieUrl=filePath;
-                        movies.UserName=User.Identity.Name;
-
-                        Updates updates=new Updates();
-                        updates.UpdateContent=fileName;
-                        updates.UpdateDate=Convert.ToString(DateTime.Now);
-                        updates.UpdateType="视频文件";
-                        updates.UpdateUserName=User.Identity.Name;
-                        try{
-                        _context.Add(movies);
-                        _context.Add(updates);
-                        await _context.SaveChangesAsync();
-                        }catch{}   
-                    }  
-                }
-            return View("Index");
-        }
-        #endregion
-        
+        #endregion  
         #region  添加滚动图片
         public IActionResult AddScrollPics(){
             return View();
@@ -218,15 +153,9 @@ namespace Cosmetology.Controllers{
                  _context.Remove(m);
                  await _context.SaveChangesAsync();
              }else if(up.UpdateType.Equals("企业内容")){
-                 Features m=_context.Feature.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
+                 Articles m=_context.Article.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
                  _context.Remove(m);
                  await _context.SaveChangesAsync();
-             }
-             else if(up.UpdateType.Equals("视频文件")){
-                 Movies m=_context.Movie.SingleOrDefault(p=>p.MovieName.Equals(up.UpdateContent));
-                 _context.Remove(m);
-                 await _context.SaveChangesAsync();
-               
              }else if(up.UpdateType.Equals("轮播图")){
                  ScrollPics s=_context.ScrollPic.SingleOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
                  _context.Remove(s);

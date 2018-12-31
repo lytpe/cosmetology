@@ -1,25 +1,39 @@
 @{
   Layout="/Views/ManageContent/_Layout.cshtml";
-  ViewData["Title"]="添加文章";
+  ViewData["Title"]="添加内容";
 }
-<body>
     <div class="container">
-        <form asp-action="AddArticles" method="POST">
+        <form asp-action="AddArticles" asp-controller="ManageContent" method="POST">
              <div class="row">
-                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章名称：</label>
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章标题：</label>
+                <input type="text" name="ArticleName" class="col-sm-4 col-md-4 col-lg-4">
+             </div>
+            <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章副标题：</label>
                 <input type="text" name="ArticleName" class="col-sm-4 col-md-4 col-lg-4">
              </div>
              <div class="row">
                 <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章内容：</label>
                 <textarea type="text" name="ArticleContext" rows="6" class="col-sm-4 col-md-4 col-lg-4"></textarea>
              </div>
-             <!--<div class="row">
-                <label class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">文章图片上传：</label>
+             <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章图片上传：</label>
                 <input type="text" name="ArticleImgUrl" class="col-sm-4 col-md-4 col-lg-4">
              </div>
-             <div class="row">
-                <label class="col-sm-4 col-md-4 col-lg-4 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">文章视频上传：</label>
-                <input type="text" name="ArticleMoiveUrl" class="col-sm-4 col-md-4 col-lg-4">
+          <!--   <div class="row">
+                <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">区域：</label>
+                <select class="selectpicker" data-live-search="true"  name="Areas" multiple>
+                     <optgroup label="首页">
+                              <option value="1">模块一</option>
+                              <option value="2">模块二</option>
+                              <option value="3">模块三</option>
+                        </optgroup>   
+                        <optgroup label="关于我们">
+                                 <option value="4">模块一</option>
+                                 <option value="5">模块二</option>
+                                 <option value="6">模块三</option>
+                        </optgroup>                          
+               </select>
              </div>-->
              <div class="row">
                <div class="col-sm-2 col-md-2 col-lg-2"></div>
@@ -28,4 +42,3 @@
              </div>
         </form>
     </div>
-</body>
