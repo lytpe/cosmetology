@@ -1,7 +1,9 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 namespace Cosmetology.Models{
     //产品内容
     public class Articles{
+        [Key]
         public int ID{get;set;}
         public string ArticleName{get;set;}
         public string ArticleSideName{get;set;}

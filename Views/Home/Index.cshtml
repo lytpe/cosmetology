@@ -29,6 +29,41 @@
 		</a>
 	</div>
 	<br/>
+    
+	<div class="row" id="IndexArticles">
+				<div class="col-sm-6 col-md-3 col-lg-3">
+					<div class="banner-bottom-grid1">
+						<h1>Sed ut perspiciatis unde quia</h1>
+						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
+							consectetur.</p>
+						<div class="more">
+							<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
+						</div>
+					</div>
+				</div>
+	</div>
+	<script>
+	
+			$.ajax({
+				url:'ManageContent/showArticles',
+				type:'POST',
+				dataType:'Json',
+				contentType:"application/json",
+				success:function(data, textStatus){
+					var articles=data.articles;
+					var htm="";
+					for(var i=0;i<articles.length;i++){
+						console.log(articles[i]);
+						htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>'"+articles[i].articleName+"'</h1><p>'"+articles[i].articleContext+"'</p><div class='more'><a asp-controller='Home' asp-action='Single' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>"
+					}
+					$("#IndexArticles").append(htm);
+				},
+				error:function(res){
+					console.log("请求失败！");
+				}
+			});
+	
+	</script>
 	<div class="row">
 				<div class="col-sm-6 col-md-3 col-lg-3">
 					<div class="banner-bottom-grid1">

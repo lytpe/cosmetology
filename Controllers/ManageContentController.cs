@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Cosmetology.Controllers{
 
-    [Authorize]
+
     public class ManageContentController:Controller{
         private ModelsDBContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
@@ -40,12 +40,21 @@ namespace Cosmetology.Controllers{
             articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
             articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
             articles.UserName=User.Identity.Name;
-        
-
+            if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Equals("3")){
+                articles.Areas="首页"+article.Areas;
+            }
+            else{
+                articles.Areas="关于我们"+article.Areas;
+            }
             Updates updates=new Updates();
             updates.UpdateContent=article.ArticleName;
             updates.UpdateDate=Convert.ToString(DateTime.Now);
-            updates.UpdateType="";
+            if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Areas.Equals("3")){
+                 updates.UpdateType="首页"+article.Areas;
+            }else{
+                updates.UpdateType="关于我们"+article.Areas;
+            }
+
             updates.UpdateUserName=User.Identity.Name;
             try{
             _context.Add(articles);
@@ -148,17 +157,13 @@ namespace Cosmetology.Controllers{
         public async Task<IActionResult> Delete(int id){
              Updates up=new Updates();
              up=_context.Updates.Find(id);
-             if(up.UpdateType.Equals("产品内容")){
-                 Articles m=_context.Article.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
-                 _context.Remove(m);
-                 await _context.SaveChangesAsync();
-             }else if(up.UpdateType.Equals("企业内容")){
-                 Articles m=_context.Article.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
-                 _context.Remove(m);
-                 await _context.SaveChangesAsync();
-             }else if(up.UpdateType.Equals("轮播图")){
+             if(up.UpdateType.Equals("轮播图")){
                  ScrollPics s=_context.ScrollPic.SingleOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
                  _context.Remove(s);
+                 await _context.SaveChangesAsync();
+             }else{
+                 Articles m=_context.Article.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
+                 _context.Remove(m);
                  await _context.SaveChangesAsync();
              }
              _context.Remove(up);
@@ -193,6 +198,13 @@ namespace Cosmetology.Controllers{
                     count=_context.Users.Where(p=>p.UserName.Equals(searchtext)).Count();
                 }
             return Json(new {total=count,rows=users});
+        }
+
+        [HttpPost]
+        public JsonResult showArticles(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("首页1")).ToList();
+            return Json(new {articles=articles});
         }
 
     }
