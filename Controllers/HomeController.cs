@@ -5,11 +5,20 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Cosmetology.Models;
+using Microsoft.AspNetCore.Hosting;
 
 namespace Cosmetology.Controllers
 {
     public class HomeController : Controller
     {
+        private ModelsDBContext _context;
+        private readonly IHostingEnvironment _hostingEnvironment;
+
+        public HomeController(IHostingEnvironment hostingEnvironment,ModelsDBContext context)
+        {
+            _hostingEnvironment = hostingEnvironment;
+            _context=context;
+        }
         public IActionResult Index()
         {
             return View();
@@ -69,6 +78,48 @@ namespace Cosmetology.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        [HttpPost]
+        public JsonResult showIndexModelOne(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("首页1")).ToList();
+            return Json(new {articles=articles});
+        }
+
+
+        [HttpPost]
+        public JsonResult showIndexModelThree(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("首页3")).ToList();
+            return Json(new {articles=articles});
+        }
+        [HttpPost]
+        public JsonResult showIndexModelTwo(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("首页2")).ToList();
+            return Json(new {articles=articles});
+        }
+
+        [HttpPost]
+        public JsonResult showBigPic(){
+            List<ScrollPics> scrolls=new List<ScrollPics>();
+            scrolls=_context.ScrollPic.ToList();
+            return Json(new {scrolls=scrolls});
+        }
+       
+        [HttpPost]
+        public JsonResult showAboutModelTwo(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("关于我们5")).ToList();
+            return Json(new {articles=articles});
+        }
+       
+        [HttpPost]
+        public JsonResult  showAboutModelThree(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("关于我们6")).ToList();
+            return Json(new {articles=articles});
         }
     }
 }

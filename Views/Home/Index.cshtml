@@ -8,16 +8,7 @@
 			<li data-target="#myCarousel" data-slide-to="1"></li>
 			<li data-target="#myCarousel" data-slide-to="2"></li>
 		</ol>   
-		<div class="carousel-inner">
-			<div class="item active">
-				<img src="../images/1.jpg" alt="First slide">
-			</div>
-			<div class="item">
-				<img src="../images/2.jpg" alt="Second slide">
-			</div>
-			<div class="item">
-				<img src="../images/3.jpg" alt="Third slide">
-			</div>
+		<div class="carousel-inner" id="bigpic">
 		</div>
 		<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
 			<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
@@ -29,23 +20,16 @@
 		</a>
 	</div>
 	<br/>
-    
-	<div class="row" id="IndexArticles">
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="banner-bottom-grid1">
-						<h1>Sed ut perspiciatis unde quia</h1>
-						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
-							consectetur.</p>
-						<div class="more">
-							<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-						</div>
-					</div>
-				</div>
+	<div class="row" id="IndexArticles"></div>
+	<br/>
+	<div class="row" >
+			<div class="col-sm-8 col-md-8 col-lg-8" id="pic"></div>
+			<div class="col-sm-4 col-md-4 col-lg-4" id="articlelists"></div>
 	</div>
-	<script>
-	
+</div>
+<script>
 			$.ajax({
-				url:'ManageContent/showArticles',
+				url:'Home/showIndexModelOne',
 				type:'POST',
 				dataType:'Json',
 				contentType:"application/json",
@@ -53,90 +37,63 @@
 					var articles=data.articles;
 					var htm="";
 					for(var i=0;i<articles.length;i++){
-						console.log(articles[i]);
-						htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>'"+articles[i].articleName+"'</h1><p>'"+articles[i].articleContext+"'</p><div class='more'><a asp-controller='Home' asp-action='Single' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>"
+					    htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>"+articles[i].articleName+"</h1><p>"+articles[i].articleSideName+"</p><div class='more'><a asp-controller='Home' asp-action='Single' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>";
 					}
 					$("#IndexArticles").append(htm);
+				},
+				error:function(){
+					console.log("请求失败！");
+				}
+			});
+			$.ajax({
+				url:'Home/showIndexModelThree',
+				type:'POST',
+				dataType:'Json',
+				contentType:"application/json",
+				success:function(data, textStatus){
+					var articles=data.articles;
+					var htm="";
+					for(var i=0;i<articles.length;i++){
+						htm+="<div class='events-grid1-right'><h4><a asp-controller='Home' asp-action='Single'>"+articles[i].articleName+"</a></h4><p>"+articles[i].articleSideName+"</p></div>";
+					}
+					$("#articlelists").append(htm);
+				},
+				error:function(){
+					console.log("请求失败！");
+				}
+			});
+			$.ajax({
+				url:'Home/showIndexModelTwo',
+				type:'POST',
+				dataType:'Json',
+				contentType:"application/json",
+				success:function(data, textStatus){
+					var articles=data.articles;
+					htm="<h3>"+articles[0].articleName+"</h3><div class='events-grid-main'><div class='overlay'>"+
+						"<div class='arrow-left'></div><div class='rectangle'></div></div><div class='description'>"+
+						"<h4>"+articles[0].articleSideName+"</h4><p>"+articles[0].articleContext+"</p></div>"+
+						"<img src='../images/4.jpg' alt='' class='img-responsive'/></div>"
+					$("#pic").append(htm);
 				},
 				error:function(res){
 					console.log("请求失败！");
 				}
 			});
-	
-	</script>
-	<div class="row">
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="banner-bottom-grid1">
-						<h1>Sed ut perspiciatis unde quia</h1>
-						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
-							consectetur.</p>
-						<div class="more">
-							<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="banner-bottom-grid1">
-						<h2>Excepteur sint occa ecat</h2>
-						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
-							consectetur.</p>
-						<div class="more">
-							<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="banner-bottom-grid1">
-						<h3>nisi ut aliquid ex ea consequatur</h3>
-						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
-							consectetur.</p>
-						<div class="more">
-							<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-3 col-lg-3">
-					<div class="banner-bottom-grid1">
-						<h3>eos et accusamus et iusto odio</h3>
-						<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, 
-							consectetur.</p>
-						<div class="more">
-							<a asp-controller="Home" asp-action="Single" class="hvr-curl-bottom-right">Read More...</a>
-						</div>
-					</div>
-				</div>
-	</div>
-	<br/>
-	<div class="row">
-			<div class="col-sm-8 col-md-8 col-lg-8">
-					<h3>voluptatem accusantium doloremque laudantium qui dolorem ipsum</h3>
-					<div class="events-grid-main">
-						<a class="link" href="#"></a>
-					  <div class="overlay">
-						<div class="arrow-left"></div>
-						<div class="rectangle"></div>
-					  </div>
-					  <div class="description">
-						<h4>Clinico</h4>
-						<p>Sintel is a short computer animated film by the Blender 
-							Institute, part of the Blender Foundation Letraset sheets containing 
-							Lorem Ipsum passages, and more recently with desktop publishing software 
-							like Aldus PageMaker including versions of Lorem Ipsum. See more at Sintel.org</p>
-					  </div>
-						<img src="~/images/4.jpg" alt=" " class="img-responsive" />
-					</div>
-			</div>
-				<div class="col-sm-4 col-md-4 col-lg-4">
-						<div>
-							<h4><a asp-controller="Home" asp-action="Single" style="text-transform: capitalize;font-size: 1.3em;">laudantium qui dolorem</a></h4>
-							<p style="color: #999;font-size: 14px;margin: 1em 0 2em;line-height: 1.8em;">Blender Foundation Letraset sheets containing 
-								Lorem Ipsum passages, and more recently with desktop publishing software.</p>
-					    </div>
-						<div>
-							<h4><a asp-controller="Home" asp-action="Single" style="text-transform: capitalize;font-size: 1.3em;">Sintel short computer</a></h4>
-							<p style="color: #999;font-size: 14px;margin: 1em 0 2em;line-height: 1.8em;">Blender Foundation Letraset sheets containing 
-								Lorem Ipsum passages, and more recently with desktop publishing software.</p>
-						</div>
-			    </div>
-	</div>
-</div>
+			$.ajax({
+				url:'Home/showBigPic',
+				type:'POST',
+				dataType:'Json',
+				contentType:"application/json",
+				success:function(data, textStatus){
+					var scrolls=data.scrolls;
+					var htm="<div class='item active'><img src='../images/1.jpg' alt='First slide'></div>";
+					for(var i=1;i<scrolls.length;i++){
+					    htm+="<div class='item'><img src='../images/2.jpg' alt='First slide'></div>";
+					}
+					$("#bigpic").append(htm);
+				},
+				error:function(){
+					console.log("请求失败!");
+				}
+			});
+</script>

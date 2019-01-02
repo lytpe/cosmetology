@@ -1,18 +1,13 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Cosmetology.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authorization;
-
-namespace Cosmetology.Controllers{
-
-
+namespace Cosmetology.Controllers
+{
     public class ManageContentController:Controller{
         private ModelsDBContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
@@ -40,7 +35,7 @@ namespace Cosmetology.Controllers{
             articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
             articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
             articles.UserName=User.Identity.Name;
-            if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Equals("3")){
+            if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Areas.Equals("3")){
                 articles.Areas="首页"+article.Areas;
             }
             else{
@@ -157,18 +152,9 @@ namespace Cosmetology.Controllers{
         public async Task<IActionResult> Delete(int id){
              Updates up=new Updates();
              up=_context.Updates.Find(id);
-             if(up.UpdateType.Equals("轮播图")){
-                 ScrollPics s=_context.ScrollPic.SingleOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
-                 _context.Remove(s);
-                 await _context.SaveChangesAsync();
-             }else{
-                 Articles m=_context.Article.SingleOrDefault(p=>p.ArticleName.Equals(up.UpdateContent));
-                 _context.Remove(m);
-                 await _context.SaveChangesAsync();
-             }
              _context.Remove(up);
              await _context.SaveChangesAsync();
-           return View();
+             return View("Update");
         }
         [HttpPost]
         public async Task<IActionResult> DeleteMessage(int id){
@@ -200,12 +186,6 @@ namespace Cosmetology.Controllers{
             return Json(new {total=count,rows=users});
         }
 
-        [HttpPost]
-        public JsonResult showArticles(){
-            List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("首页1")).ToList();
-            return Json(new {articles=articles});
-        }
 
     }
 }

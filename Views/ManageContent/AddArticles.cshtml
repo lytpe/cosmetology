@@ -3,14 +3,14 @@
   ViewData["Title"]="添加内容";
 }
     <div class="container">
-        <form asp-action="AddArticles" asp-controller="ManageContent" method="POST">
+        <form asp-action="AddArticles" asp-controller="ManageContent" method="POST" enctype="multipart/form-data">
              <div class="row">
                 <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章标题：</label>
                 <input type="text" name="ArticleName" class="col-sm-4 col-md-4 col-lg-4">
              </div>
             <div class="row">
                 <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章副标题：</label>
-                <input type="text" name="ArticleName" class="col-sm-4 col-md-4 col-lg-4">
+                <input type="text" name="ArticleSideName" class="col-sm-4 col-md-4 col-lg-4">
              </div>
              <div class="row">
                 <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章内容：</label>
