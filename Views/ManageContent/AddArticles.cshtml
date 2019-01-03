@@ -4,6 +4,7 @@
 }
     <div class="container">
         <form asp-action="AddArticles" asp-controller="ManageContent" method="POST" enctype="multipart/form-data">
+         <table>
              <div class="row">
                 <label class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2">文章标题：</label>
                 <input type="text" name="ArticleName" class="col-sm-4 col-md-4 col-lg-4">
@@ -36,9 +37,10 @@
                </select>
              </div>
              <div class="row">
-               <div class="col-sm-2 col-md-2 col-lg-2"></div>
-               <input type="submit" name="提交" value="提交" class="btn btn-primary col-sm-6 col-md-6 col-lg-6"/>
+               <div class="col-sm-2 col-md-2 col-lg-2 col-sm-offset-2 col-md-offset-2 col-lg-offset-2"></div>
+               <input type="submit" name="提交" value="提交" class="btn btn-primary col-sm-4 col-md-4 col-lg-4"/>
                <div class="col-sm-4 col-md-4 col-lg-4"></div>
              </div>
+             </table>
         </form>
     </div>

@@ -105,9 +105,7 @@ D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Home\Mail.g.cshtml.cs
-D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Home\Single.g.cshtml.cs
-D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Home\Support.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\AddArticles.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\AddScrollPics.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\Index.g.cshtml.cs

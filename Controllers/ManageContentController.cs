@@ -76,13 +76,10 @@ namespace Cosmetology.Controllers
         [ValidateAntiForgeryToken]      
         public async Task<IActionResult> AddScrollPics(ScrollPics scrollpic){
              var files=Request.Form.Files;
-            // var allowType=new string[]{"image/jpg","image/png","jpg","png"};
-             //if(files.Any(c=>allowType.Contains(c.ContentType))){
                  if(files.Sum(c=>c.Length)<=1024*1024*4){
                      foreach(var file in files){
                          string filename=Path.GetFileName(file.FileName);
                          string path=_hostingEnvironment.WebRootPath+"/contents/"+filename;
-                         //string path=WebRootPath+"/contents/images/"+filename;
                          using(var stream=new FileStream(path,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
                                 await file.CopyToAsync(stream);
                                 ScrollPics scroll=new ScrollPics();
@@ -107,10 +104,6 @@ namespace Cosmetology.Controllers
                  else{
                      return Json("图片过大");
                  }
-            // }
-           //  else{
-            //     return Json("图片格式有误");
-           //  }
              return View("Error");
         }
         #endregion 

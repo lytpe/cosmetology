@@ -23,13 +23,7 @@ namespace Cosmetology.Controllers
         {
             return View();
         }
-
         public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
         {
             return View();
         }
@@ -37,9 +31,6 @@ namespace Cosmetology.Controllers
             Articles article=new Articles();
             article=_context.Article.Find(id);
             return View(article);
-        }
-        public IActionResult Support(){
-            return View();
         }
         #region 用户邮箱信息
         public IActionResult Mail(){
