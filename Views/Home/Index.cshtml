@@ -37,7 +37,7 @@
 					var articles=data.articles;
 					var htm="";
 					for(var i=0;i<articles.length;i++){
-					    htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>"+articles[i].articleName+"</h1><p>"+articles[i].articleSideName+"</p><div class='more'><a asp-controller='Home' asp-action='Single' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>";
+					    htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>"+articles[i].articleName+"</h1><p>"+articles[i].articleSideName+"</p><div class='more'><a href='Home/Single?id="+articles[i].id+"' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>";
 					}
 					$("#IndexArticles").append(htm);
 				},
@@ -72,7 +72,7 @@
 					htm="<h3>"+articles[0].articleName+"</h3><div class='events-grid-main'><div class='overlay'>"+
 						"<div class='arrow-left'></div><div class='rectangle'></div></div><div class='description'>"+
 						"<h4>"+articles[0].articleSideName+"</h4><p>"+articles[0].articleContext+"</p></div>"+
-						"<img src='../images/4.jpg' alt='' class='img-responsive'/></div>"
+						"<img src='"+articles[0].articleImgUrl.slice(22,)+"' alt='' class='img-responsive'/></div>"
 					$("#pic").append(htm);
 				},
 				error:function(res){
@@ -86,10 +86,11 @@
 				contentType:"application/json",
 				success:function(data, textStatus){
 					var scrolls=data.scrolls;
-					var htm="<div class='item active'><img src='../images/1.jpg' alt='First slide'></div>";
+					var htm="<div class='item active'><img src='"+scrolls[0].imgUrl.slice(22,)+"' alt='First slide'></div>";
 					for(var i=1;i<scrolls.length;i++){
-					    htm+="<div class='item'><img src='../images/2.jpg' alt='First slide'></div>";
+					    htm+="<div class='item'><img src='"+scrolls[i].imgUrl.slice(22,)+"' alt='First slide'></div>";
 					}
+					console.log(scrolls)
 					$("#bigpic").append(htm);
 				},
 				error:function(){

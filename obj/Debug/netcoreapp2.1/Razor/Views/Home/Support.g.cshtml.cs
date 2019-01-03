@@ -57,7 +57,7 @@ using Cosmetology.Models;
             WriteLiteral("\n");
             EndContext();
             BeginContext(1, 49, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2468da19dedf4a91839ea5df0bd442b7", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("script", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a7ac4051efc425f989dfa5d4a538fba", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -75,12 +75,12 @@ using Cosmetology.Models;
             WriteLiteral("\n\n");
             EndContext();
             BeginContext(52, 3393, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f2fade6ed12a490e938acd4ff1e9ad59", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("body", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "76548cbd3a204b1093e9db1b6c163372", async() => {
                 BeginContext(58, 98, true);
                 WriteLiteral("\n<!-- support -->\n\t<div class=\"support\">\n\t\t\t<h3>Support Us</h3>\n\t\t\t<div class=\"support-form\">\n\t\t\t\t");
                 EndContext();
                 BeginContext(156, 217, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b249efa4b7e43279d3973172f233699", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4bd748009d90434ba64cf415649340af", async() => {
                     BeginContext(162, 204, true);
                     WriteLiteral("\n\t\t\t\t\t<input type=\"text\" value=\"Search support...\" onfocus=\"this.value = \'\';\" onblur=\"if (this.value == \'\') {this.value = \'Search support...\';}\" required=\"\">\n\t\t\t\t\t<input type=\"submit\" value=\"Submit\">\n\t\t\t\t");
                     EndContext();

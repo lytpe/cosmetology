@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Cosmetology.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Http;
+
 namespace Cosmetology.Controllers
 {
     public class ManageContentController:Controller{
@@ -26,11 +28,17 @@ namespace Cosmetology.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddArticles(Articles article){        
+        public async Task<IActionResult> AddArticles(Articles article,[FromServices]IHostingEnvironment env,IFormFile ArticleImgUrl){        
             Articles articles=new Articles();
             articles.ArticleName=article.ArticleName;
             articles.ArticleSideName=article.ArticleSideName;
-            articles.ArticleImgUrl=article.ArticleImgUrl;
+            var fileName=ArticleImgUrl.FileName;
+            fileName=env.WebRootPath+@"/contents/"+fileName;
+            using(FileStream fileStream=System.IO.File.Create(fileName)){
+                ArticleImgUrl.CopyTo(fileStream);
+                fileStream.Flush();
+            }
+            articles.ArticleImgUrl=fileName;
             articles.ArticleContext=article.ArticleContext;
             articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
             articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
@@ -73,7 +81,8 @@ namespace Cosmetology.Controllers
                  if(files.Sum(c=>c.Length)<=1024*1024*4){
                      foreach(var file in files){
                          string filename=Path.GetFileName(file.FileName);
-                         string path=_hostingEnvironment.WebRootPath+"/contents/images/"+filename;
+                         string path=_hostingEnvironment.WebRootPath+"/contents/"+filename;
+                         //string path=WebRootPath+"/contents/images/"+filename;
                          using(var stream=new FileStream(path,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
                                 await file.CopyToAsync(stream);
                                 ScrollPics scroll=new ScrollPics();
@@ -152,6 +161,16 @@ namespace Cosmetology.Controllers
         public async Task<IActionResult> Delete(int id){
              Updates up=new Updates();
              up=_context.Updates.Find(id);
+             if(up.UpdateType.Equals("轮播图")){
+                 ScrollPics scroll=new ScrollPics();
+                 scroll=_context.ScrollPic.SingleOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
+                 _context.Remove(scroll);
+             }
+             else{
+                Articles article=new Articles();
+                article=_context.Article.SingleOrDefault(p=>p.Areas.Equals(up.UpdateType) &&p.ArticleName.Equals(up.UpdateContent));
+                _context.Remove(article);
+             }
              _context.Remove(up);
              await _context.SaveChangesAsync();
              return View("Update");

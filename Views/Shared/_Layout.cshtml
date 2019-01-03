@@ -51,75 +51,33 @@
 								</ul>
 							</nav>
 						</div>
-					</nav>
+					</nav
 			</div>
 		</div>
 	  </nav></div>
     @RenderBody()
 	<div class="footer">
 			<div class="footer-grids">
-				<div class="col-md-3 footer-grid">
+				<div class="col-sm-12 col-md-4 col-lg-4 col-md-offset-1 footer-grid">
 					<p>HALOVIETNAM LTD
 						66, Dang Van ngu, Dong Da
 						Hanoi, Vietnam.
 					<a href="mailto:info@example.com">contact@example.com</a>
 					<p>电话: +844 35149182</p>
 				</div>
-				<div class="col-md-3 footer-grid">
+				<div class="col-sm-12 col-md-3 col-lg-3 footer-grid">
 					<ul>
 						<li><a asp-controller="Home" asp-action="Mail">邮箱</a></li>
 						<li><a asp-controller="Home" asp-action="About">关于</a></li>
 						<li><a asp-controller="Home" asp-action="Index">主页</a></li>
 					</ul>
 				</div>
-				<div class="col-md-3 footer-grid">
-					<ul>
-						<li><a asp-controller="Home" asp-action="Privacy">隐私政策</a></li>
-						<li><a asp-controller="Home" asp-action="Single">Terms & Conditions</a></li>
-						<li><a asp-controller="Home" asp-action="Support">支持</a></li>
-					</ul>
-				</div>
-				<div class="col-md-3 footer-grid">
-					<div class="footer-grid-left">
-						<a asp-controller="Home" asp-action="Single"><img src="~/images/4.jpg" alt=" " class="img-responsve" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a asp-controller="Home" asp-action="Single"><img src="~/images/5.jpg" alt=" " class="img-responsve" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a asp-controller="Home" asp-action="Single"><img src="~/images/6.jpg" alt=" " class="img-responsve" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a asp-controller="Home" asp-action="Single"><img src="~/images/7.jpg" alt=" " class="img-responsve" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a asp-controller="Home" asp-action="Single"><img src="~/images/8.jpg" alt=" " class="img-responsve" /></a>
-					</div>
-					<div class="footer-grid-left">
-						<a asp-controller="Home" asp-action="Single"><img src="~/images/9.jpg" alt=" " class="img-responsve" /></a>
-					</div>
-					<div class="clearfix"> </div>
+				<div class="col-sm-12 col-md-4 col-lg-4 footer-grid">
+					<p>Copyright &copy; 2018.<a asp-controller="Account" asp-action="Login">Company Name</a> All rights</p>
 				</div>
 				<div class="clearfix"> </div>
 			</div>
-			<div class="footer-copy">
-				<p>Copyright &copy; 2018.<a asp-controller="Account" asp-action="Login">Company Name</a> All rights</p>
-				<ul>
-					<li><a href="#" class="twitter"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Twitter"></span></a></li>
-					<li><a href="#" class="p"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Pinterest"></span></a></li>
-					<li><a href="#" class="facebook" id="facebook"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Facebook"></span></a></li>
-					<li><a href="#" class="dribble"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On Dribbble"></span></a></li>
-					<li><a href="#" class="rss"><span type="button" class="btn btn-default" data-toggle="tooltip" data-placement="bottom" title="Follow Us On RSS"></span></a></li>
-					<div class="clearfix"> </div>
-				</ul>
-				<script>
-					$(function(){
-					 $('[data-toggle="tooltip"]').tooltip()
-					});
-				</script>
-			</div>
 	</div>
-
     <environment include="Development">
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>

@@ -33,8 +33,10 @@ namespace Cosmetology.Controllers
         {
             return View();
         }
-        public IActionResult Single(){
-            return View();
+        public IActionResult Single(int id){
+            Articles article=new Articles();
+            article=_context.Article.Find(id);
+            return View(article);
         }
         public IActionResult Support(){
             return View();
@@ -106,6 +108,13 @@ namespace Cosmetology.Controllers
             List<ScrollPics> scrolls=new List<ScrollPics>();
             scrolls=_context.ScrollPic.ToList();
             return Json(new {scrolls=scrolls});
+        }
+               
+        [HttpPost]
+        public JsonResult showAboutModelOne(){
+            List<Articles> articles=new List<Articles>();
+            articles=_context.Article.Where(p=>p.Areas.Equals("关于我们4")).ToList();
+            return Json(new {articles=articles});
         }
        
         [HttpPost]
