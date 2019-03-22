@@ -19,13 +19,8 @@ D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Account\Register.g.cshtml.c
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\Mail.g.cshtml.cs
-D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
-D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\Shortcodes.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\Single.g.cshtml.cs
-D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Home\Support.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\AddArticles.g.cshtml.cs
-D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\AddFeatures.g.cshtml.cs
-D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\AddMovies.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\AddScrollPics.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\Index.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\MessageManage.g.cshtml.cs

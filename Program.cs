@@ -19,6 +19,7 @@ namespace Cosmetology
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>().UseKestrel().UseUrls("http://*:5000");
+                .UseStartup<Startup>().UseUrls("http://*:8080");
+                //.UseKestrel().UseUrls("https://*:8000");
     }
 }
