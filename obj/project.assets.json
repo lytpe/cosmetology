@@ -6626,6 +6626,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.logging/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Logging.dll",
         "lib/net45/Microsoft.IdentityModel.Logging.xml",
         "lib/net451/Microsoft.IdentityModel.Logging.dll",
@@ -6641,6 +6643,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.protocols/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Protocols.dll",
         "lib/net45/Microsoft.IdentityModel.Protocols.xml",
         "lib/net451/Microsoft.IdentityModel.Protocols.dll",
@@ -6656,6 +6660,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.protocols.openidconnect/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
         "lib/net45/Microsoft.IdentityModel.Protocols.OpenIdConnect.xml",
         "lib/net451/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll",
@@ -6671,6 +6677,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.protocols.wsfederation/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Protocols.WsFederation.dll",
         "lib/net45/Microsoft.IdentityModel.Protocols.WsFederation.xml",
         "lib/net451/Microsoft.IdentityModel.Protocols.WsFederation.dll",
@@ -6686,6 +6694,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.tokens/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.xml",
         "lib/net451/Microsoft.IdentityModel.Tokens.dll",
@@ -6701,6 +6711,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.tokens.saml/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Tokens.Saml.dll",
         "lib/net45/Microsoft.IdentityModel.Tokens.Saml.xml",
         "lib/net451/Microsoft.IdentityModel.Tokens.Saml.dll",
@@ -6716,6 +6728,8 @@
       "type": "package",
       "path": "microsoft.identitymodel.xml/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/Microsoft.IdentityModel.Xml.dll",
         "lib/net45/Microsoft.IdentityModel.Xml.xml",
         "lib/net451/Microsoft.IdentityModel.Xml.dll",
@@ -7361,6 +7375,8 @@
       "type": "package",
       "path": "runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "LICENSE.TXT",
         "THIRD-PARTY-NOTICES.TXT",
         "runtime.native.system.data.sqlclient.sni.4.4.0.nupkg.sha512",
@@ -8784,6 +8800,8 @@
       "type": "package",
       "path": "system.identitymodel.tokens.jwt/5.2.0",
       "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
         "lib/net45/System.IdentityModel.Tokens.Jwt.dll",
         "lib/net45/System.IdentityModel.Tokens.Jwt.xml",
         "lib/net451/System.IdentityModel.Tokens.Jwt.dll",

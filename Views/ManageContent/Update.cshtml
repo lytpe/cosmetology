@@ -12,10 +12,13 @@
          </div>
         <div class="col-sm-1 col-md-1 col-lg-1"></div>
     </div>
+    <div class="col-sm-10 col-md-10 col-lg-10 col-sm-offset-1 col-md-offset-1 col-lg-offset-1">
+        <label>右上角的搜索栏 根据 更新类型  列进行搜索</label>
+    </div>
 <script>
        $table=$("#listtable");
 		 $table.bootstrapTable({
-            url:'/ManageContent/Updates',
+            url:'/cos/ManageContent/Updates',
             method:'POST',                  //请求方式（*）
             dataType:"json",
             contentType:"application/x-www-form-urlencoded",
@@ -30,7 +33,7 @@
             queryParamsType:'limit',
             pageNumber:1,                       //初始化加载第一页，默认第一页
             pageSize: 10,                       //每页的记录行数（*）
-            pageList: [10, 25, 50, 100],        //可供选择的每页的行数（*）
+            pageList: [10, 20, 30, 40],        //可供选择的每页的行数（*）
             clickToSelect:true,
             queryParams : function (params) {
                     //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
@@ -87,11 +90,14 @@
             return;
         }
         $.ajax({
-            url:'/ManageContent/Delete?id='+ids,
+            url:'/cos/ManageContent/Delete?id='+ids,
             method:'POST',
             cache:false,
             success:function(){
                 location.reload(true);
+            },
+            fail:function(){
+                console.log("failure");
             }
         });
     });

@@ -7,10 +7,11 @@ using Cosmetology.Models;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Cosmetology.Controllers
 {
-    public class ManageContentController:Controller{
+        public class ManageContentController:Controller{
         private ModelsDBContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
 
@@ -177,16 +178,13 @@ namespace Cosmetology.Controllers
             return View("MessageManage");
         }
 
-         //显示用户列表
-        public IActionResult Show(){
-            return View();
-        }
+
         [HttpPost]
         public JsonResult GetInfos(){
             int currentpageIndex=int.Parse(Request.Form["page"]);
             int currentpageSize=int.Parse(Request.Form["rows"]);
             string searchtext=Request.Form["search"];
-            List<Users> users=new List<Users>();
+            List<User> users=new List<User>();
             int count=0;
                 if(searchtext.Equals("")){
                 users=_context.Users.Skip((currentpageIndex-1)*currentpageSize).Take(currentpageSize).ToList();

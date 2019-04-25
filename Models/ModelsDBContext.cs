@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 namespace Cosmetology.Models
 {
-    public class ModelsDBContext:IdentityDbContext<Users>{
+    public class ModelsDBContext:IdentityDbContext<User>{
         public ModelsDBContext(){}
         public ModelsDBContext(DbContextOptions<ModelsDBContext> options) : base(options)
         {

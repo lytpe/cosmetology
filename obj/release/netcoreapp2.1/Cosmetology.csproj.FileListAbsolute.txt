@@ -24,7 +24,6 @@ D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\AddArticles.g
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\AddScrollPics.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\Index.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\MessageManage.g.cshtml.cs
-D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\Show.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\Update.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\ManageContent\_Layout.g.cshtml.cs
 D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
@@ -82,3 +81,4 @@ C:\Users\jishubu1\Downloads\cosmetology-master\cosmetology-master\obj\release\ne
 C:\Users\jishubu1\Downloads\cosmetology-master\cosmetology-master\obj\release\netcoreapp2.1\Cosmetology.dll
 C:\Users\jishubu1\Downloads\cosmetology-master\cosmetology-master\obj\release\netcoreapp2.1\Cosmetology.pdb
 C:\Users\jishubu1\Downloads\cosmetology-master\cosmetology-master\obj\release\netcoreapp2.1\Cosmetology.csproj.CopyComplete
+D:\Cosmetology\obj\release\netcoreapp2.1\Razor\Views\Account\Show.g.cshtml.cs

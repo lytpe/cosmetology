@@ -9,30 +9,28 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Cosmetology.Controllers{
-    public class AccountController:Controller{
-        private SignInManager<Users> _signManager;
-        private UserManager<Users> _userManager;
-        private ModelsDBContext _context;
 
-        public AccountController(UserManager<Users> userManager,SignInManager<Users> signInManager,ModelsDBContext context){
-            _userManager=userManager;
+    public class AccountController:Controller{
+        private SignInManager<User> _signManager;
+        private UserManager<User> _userManager;
+        private ModelsDBContext _context;
+        public AccountController(UserManager<User> userManager,
+        SignInManager<User> signInManager,ModelsDBContext context){
             _signManager=signInManager;
+            _userManager=userManager;
             _context=context;
         }
 
-        [Authorize]
-        [HttpGet]
         public ViewResult Register(){
             return View();
         }
+
 //因为密码规则必须是 6 个字符以上且包含一个大写字母和小写字母，且必须包含一个非数组字母字符
-//tpe   Tpe$123
-        [Authorize]
-        [ValidateAntiForgeryToken]
+//tpe   Tpe#123
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model){
             if(ModelState.IsValid){
-                var user=new Users{UserName=model.UserName};
+                var user=new User{UserName=model.UserName};
                 var result=await _userManager.CreateAsync(user,model.Password);
                 if(result.Succeeded){
                     await _signManager.SignInAsync(user,false);
@@ -40,36 +38,44 @@ namespace Cosmetology.Controllers{
                 }
                 else{
                     foreach(var error in result.Errors){
-                        ModelState.AddModelError("",error.Description);
+                        ModelState.AddModelError("UserName",error.Description);
                     }
+                    return View(model);
                 }
             }
-            return RedirectToAction("Index","ManageContent");
+            else{
+                ModelState.AddModelError("ConfirmPassword","密码不相符！");
+                return View(model);
+            }
+
         }
-        [Authorize]
-        [ValidateAntiForgeryToken]
+
+        public IActionResult Show(){
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> Delete(string id){
-            Users users=new Users();
+            User users=new User();
             users=_context.Users.Find(id);
             _context.Remove(users);
             await _context.SaveChangesAsync();
             return View("Show","ManageContent");
         }
-        [Authorize]
-        [ValidateAntiForgeryToken]
+
         [HttpPost]
         public async Task<IActionResult> Logout(){
             await _signManager.SignOutAsync();
             return RedirectToAction("Login","Account");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult Login(string returnUrl=""){
             var model =new LoginViewModel{ReturnUrl=returnUrl};
             return View(model);
         }
-        [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -86,11 +92,9 @@ namespace Cosmetology.Controllers{
             if(string.IsNullOrEmpty(model.ReturnUrl)){
                 model.ReturnUrl="";
             }
-            ModelState.AddModelError("","Invalid login attempt");
+            ModelState.AddModelError("Password","用户名或密码错误");
             return View(model);
         }
-
-
     }
       public class RegisterViewModel{
         [Required,MaxLength(64)]

@@ -34,10 +34,10 @@ namespace Cosmetology
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            var s=Configuration.GetConnectionString("Connection");
+           // var s=Configuration.GetConnectionString("Connection");
             services.AddDbContext<ModelsDBContext>(options=>options.UseSqlite(Configuration.GetConnectionString("Connection")));
-            services.AddEntityFrameworkSqlite().AddDbContext<ModelsDBContext>();
-            services.AddIdentity<Users,IdentityRole>().AddEntityFrameworkStores<ModelsDBContext>();
+           // services.AddEntityFrameworkSqlite().AddDbContext<ModelsDBContext>();
+            services.AddIdentity<User,IdentityRole>().AddEntityFrameworkStores<ModelsDBContext>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
            
            
@@ -63,7 +63,7 @@ namespace Cosmetology
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "/cos/{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

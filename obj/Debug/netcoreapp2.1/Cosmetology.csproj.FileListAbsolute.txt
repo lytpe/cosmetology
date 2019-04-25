@@ -110,7 +110,6 @@ D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\AddArticles.g.c
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\AddScrollPics.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\Index.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\MessageManage.g.cshtml.cs
-D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\Show.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\Update.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\ManageContent\_Layout.g.cshtml.cs
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
@@ -125,3 +124,4 @@ D:\Cosmetology\obj\Debug\netcoreapp2.1\Cosmetology.Views.pdb
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Cosmetology.dll
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Cosmetology.pdb
 D:\Cosmetology\obj\Debug\netcoreapp2.1\Cosmetology.csproj.CopyComplete
+d:\Cosmetology\obj\Debug\netcoreapp2.1\Razor\Views\Account\Show.g.cshtml.cs

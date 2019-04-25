@@ -15,7 +15,7 @@
 <script>
          $table=$("#listtable");
 		 $table.bootstrapTable({
-            url: '/ManageContent/Message',
+            url: '/cos/ManageContent/Message',
             method: 'POST',                      
             dataType:"json",//服务器返回类型
             contentType:"application/x-www-form-urlencoded",
@@ -81,7 +81,7 @@
             return;
         }
         $.ajax({
-            url:'/ManageContent/DeleteMessage?id='+ids,
+            url:'/cos/ManageContent/DeleteMessage?id='+ids,
             method:'POST',
             cache:false,
             success:function(){
