@@ -37,21 +37,19 @@ namespace Cosmetology.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Mail(Messages message){
-            using(ModelsDBContext modelsDB=new ModelsDBContext()){
-                Messages messages=new Messages();
-                messages.Name=message.Name;
-                messages.Phone=message.Phone;
-                messages.Email=message.Email;
-                messages.Infos=message.Infos;
-                messages.CreateDate=Convert.ToString(DateTime.Now);
-                try{
-                modelsDB.Add(messages);
-                await modelsDB.SaveChangesAsync();
-                return View("Mail");
-                }catch{}
-            }
-            return View("Index");
+        public async Task<JsonResult> Mail(Messages message){
+            Messages messages=new Messages();
+            messages.Name=message.Name;
+            messages.Phone=message.Phone;
+            messages.Email=message.Email;
+            messages.Infos=message.Infos;
+            messages.CreateDate=Convert.ToString(DateTime.Now);
+            try{
+            _context.Add(messages);
+            await _context.SaveChangesAsync();
+            return Json("success");
+            }catch{}
+            return Json("error");
         }
         #endregion
          [HttpPost]

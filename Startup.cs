@@ -63,7 +63,7 @@ namespace Cosmetology
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "/cos/{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }

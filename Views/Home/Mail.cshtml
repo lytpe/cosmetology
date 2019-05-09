@@ -16,18 +16,42 @@
 			</div>
 			<div class="col-md-8 col-sm-12 col-lg-8 contact-left">
 				<h2>联系方式</h2>
-				<form asp-controller="Home" asp-action="Mail" method="POST">
-					<input type="text" value="姓名" name="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '姓名';}" required="">
-					<input type="email" value="邮箱" name="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '邮箱';}" required="">
-					<input type="text" value="电话" name="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '电话';}" required="">
-					<textarea type="text"  name="Infos" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '您的信息。。。';}" required="">您的信息。。。</textarea>
-					<input type="submit" value="提交" >
+				<form  id="mails" >
+					<input id="name" type="text"  name="Name"  placeholder="姓名" required>
+					<input id="email" type="email"  name="Email"  placeholder="邮箱" required>
+					<input id="phone" type="text"   name="Phone"  placeholder="电话" required>
+					<textarea id="infos" type="text"  name="Infos"  placeholder="您的信息。。。" required></textarea>
+					<input type="submit" value="提交" id="submit">
 				</form>
 			</div>
 	</div>
 	<br/>
 	<div class="row">
-		<iframe  class="col-sm-12 col-md-12 col-lg-12"  height="600" frameborder="0" scrolling="no"  src="http://api.map.baidu.com/geocoder?address=常熟市黄河路777号佳和广场二幢414&coord_type=gcj02&output=html&src=webapp.baidu.openAPIdemo"></iframe>
+		 <iframe  class="col-sm-12 col-md-12 col-lg-12"  height="600" frameborder="0" scrolling="no"  src="https://api.map.baidu.com/geocoder?address=常熟市黄河路777号佳和广场二幢414&coord_type=gcj02&output=html&src=webapp.baidu.openAPIdemo"></iframe> 
 	</div>
 	<br/>
 </div>
+<script type="text/javascript">
+    var name=$("#name").value;
+	var email=$("#email").value;
+    var phone=$("#phone").value;
+	var infos=$("#infos").value;
+	$("#submit").click(function(){
+		if(name!=null&&email!=null&&phone!=null&&infos!=null){
+			$.ajax({
+				type:'POST',
+				url:'/Home/Mail',
+				contentType: "application/json",  
+				data:$("#mails").serialize(),
+				dataType: "json", //json类型
+				success:function(res){
+					//var result = JSON.stringify(res); 
+					alert("提交成功");
+				},
+				error:function(res){
+					alert("提交失败!请耐心重新填写");
+				}
+			});
+		}
+	});
+</script>

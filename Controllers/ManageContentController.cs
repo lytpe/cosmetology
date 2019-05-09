@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Hosting;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Authorization;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats;
+using SixLabors.ImageSharp.Processing;
 
 namespace Cosmetology.Controllers
 {
@@ -29,27 +32,65 @@ namespace Cosmetology.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddArticles(Articles article,[FromServices]IHostingEnvironment env,IFormFile ArticleImgUrl){        
+        public async Task<IActionResult> AddArticles(Articles article){        
             Articles articles=new Articles();
             articles.ArticleName=article.ArticleName;
             articles.ArticleSideName=article.ArticleSideName;
-            var fileName=ArticleImgUrl.FileName;
-            fileName=env.WebRootPath+@"/contents/"+fileName;
-            using(FileStream fileStream=System.IO.File.Create(fileName)){
-                ArticleImgUrl.CopyTo(fileStream);
+
+            var files=Request.Form.Files;
+            var fileName=files.First().FileName;
+            var filePath=_hostingEnvironment.WebRootPath+"/picsource/"+fileName;
+            using(FileStream fileStream=new FileStream(filePath,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
+                files.First().CopyTo(fileStream);
                 fileStream.Flush();
             }
-            articles.ArticleImgUrl=fileName;
+
+            string selfpath="";
+            if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Areas.Equals("3")){
+                articles.Areas="首页"+article.Areas;
+                if(article.Areas.Equals("2")){
+                    selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
+                    var image=Image.Load(filePath);
+                    image.Mutate(c=>c.Resize(640,426));
+                    using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
+                    {
+                        image.SaveAsPng(selfstream);
+                    }
+                }else{
+                    selfpath=filePath;
+                }
+
+            }
+            else{
+                articles.Areas="关于我们"+article.Areas;
+                if(article.Areas.Equals("5")){
+                    selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
+                    var image=Image.Load(filePath);
+                    image.Mutate(c=>c.Resize(640,426));
+                    using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
+                    {
+                        image.SaveAsPng(selfstream);
+                    }
+                }
+                if(article.Areas.Equals("6")){
+                    selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
+                    var image=Image.Load(filePath);
+                    image.Mutate(c=>c.Resize(200,150));
+                    using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
+                    {
+                        image.SaveAsPng(selfstream);
+                    }
+                }else{
+                    selfpath=filePath;
+                }
+
+            }
+            articles.ArticleImgUrl=selfpath;
             articles.ArticleContext=article.ArticleContext;
             articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
             articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
             articles.UserName=User.Identity.Name;
-            if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Areas.Equals("3")){
-                articles.Areas="首页"+article.Areas;
-            }
-            else{
-                articles.Areas="关于我们"+article.Areas;
-            }
+
             Updates updates=new Updates();
             updates.UpdateContent=article.ArticleName;
             updates.UpdateDate=Convert.ToString(DateTime.Now);
@@ -58,7 +99,6 @@ namespace Cosmetology.Controllers
             }else{
                 updates.UpdateType="关于我们"+article.Areas;
             }
-
             updates.UpdateUserName=User.Identity.Name;
             try{
             _context.Add(articles);
@@ -76,36 +116,43 @@ namespace Cosmetology.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]      
         public async Task<IActionResult> AddScrollPics(ScrollPics scrollpic){
-             var files=Request.Form.Files;
+                 string selfName=scrollpic.PicName;
+                 var files=Request.Form.Files;
                  if(files.Sum(c=>c.Length)<=1024*1024*4){
-                     foreach(var file in files){
-                         string filename=Path.GetFileName(file.FileName);
-                         string path=_hostingEnvironment.WebRootPath+"/contents/"+filename;
-                         using(var stream=new FileStream(path,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
-                                await file.CopyToAsync(stream);
-                                ScrollPics scroll=new ScrollPics();
-                                scroll.UserName=User.Identity.Name;
-                                scroll.PicName=scrollpic.PicName;
-                                scroll.ImgUrl=path;
-                                scroll.ImgCreateDate=Convert.ToString(DateTime.Now);
-                                Updates updates=new Updates();
-                                updates.UpdateContent=path;
-                                updates.UpdateDate=Convert.ToString(DateTime.Now);
-                                updates.UpdateType="轮播图";
-                                updates.UpdateUserName=User.Identity.Name;
-                                try{
-                                _context.Add(scroll);
-                                _context.Add(updates);
-                                await _context.SaveChangesAsync();
-                                }catch{}
-                                return View("Index");
-                        }
-                     }
+                    string  fileName=files.First().FileName;
+                    string filepath=_hostingEnvironment.WebRootPath+"/picsource/"+fileName;
+                    using(var stream=new FileStream(filepath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
+                    {
+                    files.First().CopyTo(stream);
+                    }
+                    //将上传的原图片进行缩减
+                    string selfpath=_hostingEnvironment.WebRootPath+"/contents/"+selfName+".png";   
+                    var image=Image.Load(filepath);
+                    image.Mutate(c=>c.Resize(1280,700));
+                    using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
+                    {
+                        image.SaveAsPng(selfstream);
+                    }
+                    ScrollPics scroll=new ScrollPics();
+                    scroll.UserName=User.Identity.Name;
+                    scroll.PicName=scrollpic.PicName;
+                    scroll.ImgUrl=selfpath;
+                    scroll.ImgCreateDate=Convert.ToString(DateTime.Now);
+                    Updates updates=new Updates();
+                    updates.UpdateContent=selfpath;
+                    updates.UpdateDate=Convert.ToString(DateTime.Now);
+                    updates.UpdateType="轮播图";
+                    updates.UpdateUserName=User.Identity.Name;
+                    try{
+                    _context.Add(scroll);
+                    _context.Add(updates);
+                    await _context.SaveChangesAsync();
+                    }catch{}
+                    return View("Index");
                  }
                  else{
                      return Json("图片过大");
                  }
-             return View("Error");
         }
         #endregion 
         #region 客户信息显示
@@ -134,6 +181,7 @@ namespace Cosmetology.Controllers
         public IActionResult Update(){
             return View();
         }
+        //返回网站修改信息列表
         [HttpPost]
         public JsonResult Updates(){
             int currentpageIndex=int.Parse(Request.Form["page"]);
@@ -151,24 +199,26 @@ namespace Cosmetology.Controllers
             return Json(new {total=count,rows=updates});
         }
         #endregion 
+        //在网站修改信息列表中删除数据
         [HttpPost]
         public async Task<IActionResult> Delete(int id){
              Updates up=new Updates();
              up=_context.Updates.Find(id);
              if(up.UpdateType.Equals("轮播图")){
                  ScrollPics scroll=new ScrollPics();
-                 scroll=_context.ScrollPic.SingleOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
+                 scroll=_context.ScrollPic.FirstOrDefault(p=>p.ImgUrl.Equals(up.UpdateContent));
                  _context.Remove(scroll);
              }
              else{
                 Articles article=new Articles();
-                article=_context.Article.SingleOrDefault(p=>p.Areas.Equals(up.UpdateType) &&p.ArticleName.Equals(up.UpdateContent));
+                article=_context.Article.FirstOrDefault(p=>p.Areas.Equals(up.UpdateType) && p.ArticleName.Equals(up.UpdateContent));
                 _context.Remove(article);
              }
              _context.Remove(up);
              await _context.SaveChangesAsync();
              return View("Update");
         }
+        //删除网站预约信息
         [HttpPost]
         public async Task<IActionResult> DeleteMessage(int id){
             Messages me=new Messages();

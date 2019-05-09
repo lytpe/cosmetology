@@ -29,7 +29,7 @@
 </div>
 <script>
 	$.ajax({
-		url:'/cos/Home/showBigPic',
+		url:'/Home/showBigPic',
 		type:'POST',
 		dataType:'Json',
 		contentType:"application/json",
@@ -46,7 +46,7 @@
 		}
 	});
 	$.ajax({
-		url:'/cos/Home/showIndexModelOne',
+		url:'/Home/showIndexModelOne',
 		type:'POST',
 		dataType:'Json',
 		contentType:"application/json",
@@ -54,7 +54,7 @@
 			var articles=data.articles;
 			var htm="";
 			for(var i=0;i<articles.length;i++){
-				htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>"+articles[i].articleName+"</h1><p>"+articles[i].articleSideName+"</p><div class='more'><a href='/cos/Home/Single?id="+articles[i].id+"' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>";
+				htm+="<div class='col-sm-6 col-md-3 col-lg-3'><div class='banner-bottom-grid1'><h1>"+articles[i].articleName+"</h1><p>"+articles[i].articleSideName+"</p><div class='more'><a href='/Home/Single?id="+articles[i].id+"' class='hvr-curl-bottom-right'>Read More...</a></div></div></div>";
 			}
 			$("#IndexArticles").append(htm);
 		},
@@ -63,7 +63,7 @@
 		}
 	});
 	$.ajax({
-		url:'/cos/Home/showIndexModelTwo',
+		url:'/Home/showIndexModelTwo',
 		type:'POST',
 		dataType:'Json',
 		contentType:"application/json",
@@ -80,7 +80,7 @@
 		}
 	});
 	$.ajax({
-		url:'/cos/Home/showIndexModelThree',
+		url:'/Home/showIndexModelThree',
 		type:'POST',
 		dataType:'Json',
 		contentType:"application/json",
@@ -88,7 +88,7 @@
 			var articles=data.articles;
 			var htm="";
 			for(var i=0;i<articles.length;i++){
-				htm+="<div class='events-grid1-right'><h4><a asp-controller='Home' asp-action='Single'>"+articles[i].articleName+"</a></h4><p>"+articles[i].articleSideName+"</p></div>";
+				htm+="<div class='events-grid1-right'><a href='/Home/Single?id="+articles[i].id+"'>"+articles[i].articleName+"</a><p>"+articles[i].articleSideName+"</p></div>";
 			}
 			$("#articlelists").append(htm);
 		},

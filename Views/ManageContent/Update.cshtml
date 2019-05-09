@@ -18,7 +18,7 @@
 <script>
        $table=$("#listtable");
 		 $table.bootstrapTable({
-            url:'/cos/ManageContent/Updates',
+            url:'/ManageContent/Updates',
             method:'POST',                  //请求方式（*）
             dataType:"json",
             contentType:"application/x-www-form-urlencoded",
@@ -90,7 +90,7 @@
             return;
         }
         $.ajax({
-            url:'/cos/ManageContent/Delete?id='+ids,
+            url:'/ManageContent/Delete?id='+ids,
             method:'POST',
             cache:false,
             success:function(){

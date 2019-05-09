@@ -3,31 +3,32 @@
 @{
 	ViewData["Title"]="内容";
 }
+@{
+	string url="";
+	if(@Model.ArticleImgUrl!=null){
+		url=@Model.ArticleImgUrl.Remove(0,22);
+	}
+	else{
+		url="";
+	}
+}
 	<div class="single">
 			<div class="col-md-10 col-md-offset-1 single-left">
-				<h3>@Model.ArticleName</h3>
+				<h3 style="text-align:center;">@Model.ArticleName</h3>
+
+				<img src="@url" alt=""  class="img-responsive" />
+				<p>
+					<span>
+						@Model.ArticleContext
+					</span>
+					<span style="text-align:right;">
+						I will be happy to hear that this article is userful for you.
+					</span>
+				</p>
 				<ul>
 					<li><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> @Model.ArticleUpdateDate</li>
 					<li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> @Model.UserName</a></li>
 				</ul>
-				@{
-					string url="";
-					 if(@Model.ArticleImgUrl!=null){
-					    url=@Model.ArticleImgUrl.Remove(0,22);
-					 }
-					 else{
-					    url="";
-					 }
-				}
-				<img src="@url" alt=""  class="img-responsive" />
-				<p>@Model.ArticleContext
-					<i>I will give you a complete account of the system, and 
-						expound the actual teachings of the great explorer of the truth.</i>
-					<span>But I must explain to you how all this mistaken idea of denouncing pleasure 
-						and praising pain was born and I will give you a complete account of the system, and 
-						expound the actual teachings of the great explorer of the truth, the master-builder 
-						of human happiness. No one rejects, dislikes, or avoids pleasure itself, because it 
-						is pleasure</span></p>
 			</div>
 			<div class="clearfix"> </div>
 	</div>
