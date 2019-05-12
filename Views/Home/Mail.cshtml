@@ -27,11 +27,39 @@
 	</div>
 	<br/>
 	<div class="row">
-		 <iframe  class="col-sm-12 col-md-12 col-lg-12"  height="600" frameborder="0" scrolling="no"  src="https://api.map.baidu.com/geocoder?address=常熟市黄河路777号佳和广场二幢414&coord_type=gcj02&output=html&src=webapp.baidu.openAPIdemo"></iframe> 
+         <div id="map" class="col-md-12 col-sm-12 col-lg-12" style="height:600px;"></div>
 	</div>
 	<br/>
 </div>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=LEC1NI7PdI4wk7bHSVvnZ2y8qSdzuhGC&s=1"></script>
 <script type="text/javascript">
+var sContent =
+	"<h4>苏州瑞兰雅</h4>" + 
+	"<img style='float:right;margin:4px' id='imgDemo' src='../contents/logo.jpg' width='139' height='104' title='天安门'/>" + 
+	"<p>地址：常熟市黄河路777号佳和广场二幢414</p>" + 
+	"</div>";
+	var infoWindow = new BMap.InfoWindow(sContent);  // 创建信息窗口对象
+    var map=new BMap.Map("map");
+	map.enableScrollWheelZoom(true);
+    map.addControl(new BMap.NavigationControl());
+	var myGeo = new BMap.Geocoder();      
+	// 将地址解析结果显示在地图上，并调整地图视野    
+	myGeo.getPoint("常熟市黄河路777号佳和广场二幢414", function(point){      
+		if (point) {      
+			map.centerAndZoom(point, 16);      
+			var marker=new BMap.Marker(point);
+			map.addOverlay(marker);
+		marker.addEventListener("click", function(){          
+			this.openInfoWindow(infoWindow);
+			//图片加载完毕重绘infowindow
+			document.getElementById('imgDemo').onload = function (){
+				infoWindow.redraw();   //防止在网速较慢，图片未加载时，生成的信息框高度比图片的总高度小，导致图片部分被隐藏
+			}
+		});
+
+		}      
+	}, 
+	"苏州市");
     var name=$("#name").value;
 	var email=$("#email").value;
     var phone=$("#phone").value;

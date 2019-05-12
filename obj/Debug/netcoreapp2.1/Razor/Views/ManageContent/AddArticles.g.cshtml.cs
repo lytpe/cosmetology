@@ -72,7 +72,7 @@ using Cosmetology.Models;
             WriteLiteral("    <div class=\"container\">\n        ");
             EndContext();
             BeginContext(117, 2426, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b6f30cfb28ca4c919149507cae08d5e2", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "eba39c2920e64e02a7fa0ae29ae1bb37", async() => {
                 BeginContext(223, 1411, true);
                 WriteLiteral(@"
          <table>
@@ -100,7 +100,7 @@ using Cosmetology.Models;
                               ");
                 EndContext();
                 BeginContext(1634, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "269d18a1a6d24b7bb2ac426bedcc17b5", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1646a7e00bf44d5f9429acc86e09bb2d", async() => {
                     BeginContext(1652, 3, true);
                     WriteLiteral("模块一");
                     EndContext();
@@ -122,7 +122,7 @@ using Cosmetology.Models;
                 WriteLiteral("\n                              ");
                 EndContext();
                 BeginContext(1695, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb62e3dee30c4e0eb1fc4508dc9c6c40", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9f4655117aa04a28ad9192d802449892", async() => {
                     BeginContext(1713, 3, true);
                     WriteLiteral("模块二");
                     EndContext();
@@ -144,7 +144,7 @@ using Cosmetology.Models;
                 WriteLiteral("\n                              ");
                 EndContext();
                 BeginContext(1756, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7b3f822f663d46e783b77aabc0a77320", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ddbc339a9cef463ea38ad9243858b54f", async() => {
                     BeginContext(1774, 3, true);
                     WriteLiteral("模块三");
                     EndContext();
@@ -166,7 +166,7 @@ using Cosmetology.Models;
                 WriteLiteral("\n                        </optgroup>   \n                        <optgroup label=\"关于我们\">\n                                 ");
                 EndContext();
                 BeginContext(1907, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56a784f333f44cbfafa3537159d99ed9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df7a7a7d63024c388825b5057def3d01", async() => {
                     BeginContext(1925, 3, true);
                     WriteLiteral("模块一");
                     EndContext();
@@ -188,7 +188,7 @@ using Cosmetology.Models;
                 WriteLiteral("\n                                 ");
                 EndContext();
                 BeginContext(1971, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9fe3bcabdc0e4c95839a2edfb675f415", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ba235fdbe9284374972e8d3073201509", async() => {
                     BeginContext(1989, 3, true);
                     WriteLiteral("模块二");
                     EndContext();
@@ -210,7 +210,7 @@ using Cosmetology.Models;
                 WriteLiteral("\n                                 ");
                 EndContext();
                 BeginContext(2035, 30, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8a71516ad9964498aeac51e523834504", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "49c57340cb8548079067c33019555d6a", async() => {
                     BeginContext(2053, 3, true);
                     WriteLiteral("模块三");
                     EndContext();
