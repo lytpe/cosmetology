@@ -2,6 +2,7 @@
 	ViewData["Title"]="首页";
 }
 <div class="container">
+	<br/><br/>
 	<div id="myCarousel" class="carousel slide">
 		<ol class="carousel-indicators">
 			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -35,9 +36,9 @@
 		contentType:"application/json",
 		success:function(data, textStatus){
 			var scrolls=data.scrolls;
-			var htm="<div class='item active'><img src='"+scrolls[0].imgUrl.slice(22,)+"' alt='First slide' class='img-responsive'></div>";
+			var htm="<div class='item active'><img src='"+scrolls[0].imgUrl+"' alt='First slide' class='img-responsive'></div>";
 			for(var i=1;i<scrolls.length;i++){
-				htm+="<div class='item'><img src='"+scrolls[i].imgUrl.slice(22,)+"' alt='First slide' class='img-responsive'></div>";
+				htm+="<div class='item'><img src='"+scrolls[i].imgUrl+"' alt='First slide' class='img-responsive'></div>";
 			}
 			$("#bigpic").append(htm);
 		},
@@ -72,7 +73,7 @@
 			htm="<h3>"+articles[0].articleName+"</h3><div class='events-grid-main'><div class='overlay'>"+
 				"<div class='arrow-left'></div><div class='rectangle'></div></div><div class='description'>"+
 				"<h4>"+articles[0].articleSideName+"</h4><p>"+articles[0].articleContext+"</p></div>"+
-				"<img src='"+articles[0].articleImgUrl.slice(22,)+"' alt='' class='img-responsive'/></div>"
+				"<img src='"+articles[0].articleImgUrl+"' alt='' class='img-responsive'/></div>"
 			$("#pic").append(htm);
 		},
 		error:function(){

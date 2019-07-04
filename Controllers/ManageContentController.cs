@@ -14,6 +14,7 @@ using SixLabors.ImageSharp.Processing;
 
 namespace Cosmetology.Controllers
 {
+        [Authorize]
         public class ManageContentController:Controller{
         private ModelsDBContext _context;
         private readonly IHostingEnvironment _hostingEnvironment;
@@ -39,17 +40,17 @@ namespace Cosmetology.Controllers
 
             var files=Request.Form.Files;
             var fileName=files.First().FileName;
-            var filePath=_hostingEnvironment.WebRootPath+"/picsource/"+fileName;
+            var filePath=_hostingEnvironment.WebRootPath+"/articlepics/"+fileName;
             using(FileStream fileStream=new FileStream(filePath,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
                 files.First().CopyTo(fileStream);
                 fileStream.Flush();
             }
-
-            string selfpath="";
+            string url=Request.Host.Value;
+            string requestPath="https://"+url+":8088/contents/"+fileName;
             if(article.Areas.Equals("1")||article.Areas.Equals("2")||article.Areas.Equals("3")){
                 articles.Areas="首页"+article.Areas;
                 if(article.Areas.Equals("2")){
-                    selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
+                    string selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
                     var image=Image.Load(filePath);
                     image.Mutate(c=>c.Resize(640,426));
                     using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
@@ -57,14 +58,13 @@ namespace Cosmetology.Controllers
                         image.SaveAsPng(selfstream);
                     }
                 }else{
-                    selfpath=filePath;
+                    requestPath="https://"+url+":8088/articlepics/"+fileName;
                 }
-
             }
             else{
                 articles.Areas="关于我们"+article.Areas;
                 if(article.Areas.Equals("5")){
-                    selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
+                    string selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
                     var image=Image.Load(filePath);
                     image.Mutate(c=>c.Resize(640,426));
                     using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
@@ -73,7 +73,7 @@ namespace Cosmetology.Controllers
                     }
                 }
                 if(article.Areas.Equals("6")){
-                    selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
+                    string selfpath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;   
                     var image=Image.Load(filePath);
                     image.Mutate(c=>c.Resize(200,150));
                     using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
@@ -81,11 +81,11 @@ namespace Cosmetology.Controllers
                         image.SaveAsPng(selfstream);
                     }
                 }else{
-                    selfpath=filePath;
+                    requestPath="https://"+url+":8088/articlepics/"+fileName;
                 }
 
             }
-            articles.ArticleImgUrl=selfpath;
+            articles.ArticleImgUrl=requestPath;
             articles.ArticleContext=article.ArticleContext;
             articles.ArticleCreateDate=Convert.ToString(DateTime.Now);
             articles.ArticleUpdateDate=Convert.ToString(DateTime.Now);
@@ -116,44 +116,34 @@ namespace Cosmetology.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]      
         public async Task<IActionResult> AddScrollPics(ScrollPics scrollpic){
-                 string selfName=scrollpic.PicName;
-                 var files=Request.Form.Files;
-                 if(files.Sum(c=>c.Length)<=1024*1024*4){
-                    string  fileName=files.First().FileName;
-                    string filepath=_hostingEnvironment.WebRootPath+"/picsource/"+fileName;
-                    using(var stream=new FileStream(filepath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
-                    {
-                    files.First().CopyTo(stream);
-                    }
-                    //将上传的原图片进行缩减
-                    string selfpath=_hostingEnvironment.WebRootPath+"/contents/"+selfName+".png";   
-                    var image=Image.Load(filepath);
-                    image.Mutate(c=>c.Resize(1280,700));
-                    using( var selfstream=new FileStream(selfpath,FileMode.OpenOrCreate,FileAccess.ReadWrite))
-                    {
-                        image.SaveAsPng(selfstream);
-                    }
-                    ScrollPics scroll=new ScrollPics();
-                    scroll.UserName=User.Identity.Name;
-                    scroll.PicName=scrollpic.PicName;
-                    scroll.ImgUrl=selfpath;
-                    scroll.ImgCreateDate=Convert.ToString(DateTime.Now);
-                    Updates updates=new Updates();
-                    updates.UpdateContent=selfpath;
-                    updates.UpdateDate=Convert.ToString(DateTime.Now);
-                    updates.UpdateType="轮播图";
-                    updates.UpdateUserName=User.Identity.Name;
-                    try{
-                    _context.Add(scroll);
-                    _context.Add(updates);
-                    await _context.SaveChangesAsync();
-                    }catch{}
-                    return View("Index");
-                 }
-                 else{
-                     return Json("图片过大");
-                 }
-        }
+                var file=Request.Form.Files;
+                var fileName=file.First().FileName;
+                 //上传原始图片
+                string filepath=_hostingEnvironment.WebRootPath+"/contents/"+fileName;
+                using(FileStream fileStream=new FileStream(filepath,FileMode.OpenOrCreate,FileAccess.ReadWrite)){
+                    file.First().CopyTo(fileStream);
+                    fileStream.Flush();
+                }
+                 //请求缩小图片
+                string url=Request.Host.Value;
+                string requestPath="https://"+url+":8088/contents/"+fileName;
+                ScrollPics scroll=new ScrollPics();
+                scroll.UserName=User.Identity.Name;
+                scroll.PicName=scrollpic.PicName;
+                scroll.ImgUrl=requestPath;
+                scroll.ImgCreateDate=Convert.ToString(DateTime.Now);
+                Updates updates=new Updates();
+                updates.UpdateContent=requestPath;
+                updates.UpdateDate=Convert.ToString(DateTime.Now);
+                updates.UpdateType="轮播图";
+                updates.UpdateUserName=User.Identity.Name;
+                try{
+                _context.Add(scroll);
+                _context.Add(updates);
+                await _context.SaveChangesAsync();
+                }catch{}
+                return View("Index");
+              }
         #endregion 
         #region 客户信息显示
         public IActionResult MessageManage(){

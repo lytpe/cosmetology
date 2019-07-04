@@ -37,7 +37,7 @@
 		success:function(data, textStatus){
 			var articles=data.articles;
 			var htm="<h3>"+articles[0].articleName+"</h3><p>"+articles[0].articleContext+"</p>"+
-					"<img src='"+articles[0].articleImgUrl.slice(22,)+"' alt='' class='img-responsive'/>";
+					"<img src='"+articles[0].articleImgUrl+"' alt='' class='img-responsive'/>";
 			$("#aboutModeltwo").append(htm);
 		},
 		error:function(){
@@ -54,7 +54,7 @@
 			var htm="<h3>Testimonials</h3><br/>";
 			for(var i=0;i<articles.length;i++){
 				htm+="<div class='row'><div class='col-sm-4 col-md-4 col-lg-4'>"+
-						"<img src='"+articles[i].articleImgUrl.slice(22,)+"' alt='' class='img-responsive'/>"+
+						"<img src='"+articles[i].articleImgUrl+"' alt='' class='img-responsive'/>"+
 						"</div><div class='col-sm-8 col-md-8 col-lg-8'><p>"+articles[i].articleContext+"</p></div></div><br/>";
 			}
 			$("#aboutModelthree").append(htm);

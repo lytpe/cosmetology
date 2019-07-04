@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Cosmetology.Models;
 using Microsoft.AspNetCore.Hosting;
-
+using Cosmetology.Services;
 namespace Cosmetology.Controllers
 {
     public class HomeController : Controller
@@ -28,8 +28,7 @@ namespace Cosmetology.Controllers
             return View();
         }
         public IActionResult Single(int id){
-            Articles article=new Articles();
-            article=_context.Article.Find(id);
+            Articles article=HomeServices.searchArticle(_context,id);
             return View(article);
         }
         #region 用户邮箱信息
@@ -37,19 +36,17 @@ namespace Cosmetology.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<JsonResult> Mail(Messages message){
+        public  ActionResult Mail(string Name,string Phone,string Email,string Infos){
             Messages messages=new Messages();
-            messages.Name=message.Name;
-            messages.Phone=message.Phone;
-            messages.Email=message.Email;
-            messages.Infos=message.Infos;
+            messages.Name=Name;
+            messages.Phone=Phone;
+            messages.Email=Email;
+            messages.Infos=Infos;
             messages.CreateDate=Convert.ToString(DateTime.Now);
-            try{
             _context.Add(messages);
-            await _context.SaveChangesAsync();
-            return Json("success");
-            }catch{}
-            return Json("error");
+            _context.SaveChanges();
+            ViewData["Infos"]="success";
+            return View();
         }
         #endregion
          [HttpPost]
@@ -74,21 +71,19 @@ namespace Cosmetology.Controllers
         [HttpPost]
         public JsonResult showIndexModelOne(){
             List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("首页1")).ToList();
+            articles=HomeServices.showIndexModel(_context,"首页1");
             return Json(new {articles=articles});
         }
-
-
         [HttpPost]
         public JsonResult showIndexModelThree(){
             List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("首页3")).ToList();
+            articles=HomeServices.showIndexModel(_context,"首页3");
             return Json(new {articles=articles});
         }
         [HttpPost]
         public JsonResult showIndexModelTwo(){
             List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("首页2")).ToList();
+            articles=HomeServices.showIndexModel(_context,"首页2");
             return Json(new {articles=articles});
         }
 
@@ -102,21 +97,21 @@ namespace Cosmetology.Controllers
         [HttpPost]
         public JsonResult showAboutModelOne(){
             List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("关于我们4")).ToList();
+            articles=HomeServices.showIndexModel(_context,"关于我们4");
             return Json(new {articles=articles});
         }
        
         [HttpPost]
         public JsonResult showAboutModelTwo(){
             List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("关于我们5")).ToList();
+            articles=HomeServices.showIndexModel(_context,"关于我们5");
             return Json(new {articles=articles});
         }
        
         [HttpPost]
         public JsonResult  showAboutModelThree(){
             List<Articles> articles=new List<Articles>();
-            articles=_context.Article.Where(p=>p.Areas.Equals("关于我们6")).ToList();
+            articles=HomeServices.showIndexModel(_context,"关于我们6");
             return Json(new {articles=articles});
         }
     }
